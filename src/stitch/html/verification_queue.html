@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GowesBareng - Verification Queue</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700;800&amp;family=Hanken+Grotesk:wght@400;500&amp;family=Space+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#f9fbe5",
+                    "surface": "#f9fbe5",
+                    "on-primary-fixed": "#171e00",
+                    "on-surface": "#1a1d10",
+                    "on-tertiary-fixed-variant": "#004f54",
+                    "background": "#f9fbe5",
+                    "on-tertiary": "#ffffff",
+                    "surface-variant": "#e2e4cf",
+                    "outline-variant": "#c5c9ac",
+                    "inverse-on-surface": "#f1f2dc",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#ffdbd1",
+                    "secondary": "#ac2e00",
+                    "tertiary-fixed-dim": "#00dbe9",
+                    "on-tertiary-container": "#00777f",
+                    "on-surface-variant": "#444932",
+                    "tertiary-container": "#bbf9ff",
+                    "surface-container": "#eef0da",
+                    "on-secondary-fixed": "#3b0900",
+                    "primary-fixed": "#caf300",
+                    "error-container": "#ffdad6",
+                    "on-primary-container": "#5f7400",
+                    "primary-container": "#d4ff00",
+                    "inverse-surface": "#2f3223",
+                    "surface-container-highest": "#e2e4cf",
+                    "primary": "#536600",
+                    "surface-container-low": "#f4f5df",
+                    "on-background": "#1a1d10",
+                    "surface-tint": "#536600",
+                    "inverse-primary": "#b0d500",
+                    "tertiary": "#006970",
+                    "primary-fixed-dim": "#b0d500",
+                    "on-secondary-container": "#fffbff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#002022",
+                    "on-secondary-fixed-variant": "#862200",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#3e4c00",
+                    "secondary-container": "#d73b00",
+                    "secondary-fixed-dim": "#ffb5a0",
+                    "outline": "#757a60",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#e8ead4",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#dadcc6",
+                    "tertiary-fixed": "#7df4ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "lg": "48px",
+                    "xl": "80px",
+                    "grid-gutter": "16px",
+                    "grid-margin": "24px",
+                    "sm": "16px",
+                    "md": "24px",
+                    "xs": "8px"
+            },
+            "fontFamily": {
+                    "display-lg-mobile": ["Space Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["Space Grotesk"],
+                    "display-lg": ["Space Grotesk"],
+                    "label-md": ["Space Mono"],
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-md": ["Space Grotesk"],
+                    "label-sm": ["Space Mono"],
+                    "headline-lg": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "display-lg-mobile": ["48px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.1", "fontWeight": "700"}],
+                    "display-lg": ["72px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "label-md": ["14px", {"lineHeight": "1.0", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                    "headline-lg": ["40px", {"lineHeight": "1.1", "fontWeight": "700"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 1;
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md h-screen flex overflow-hidden">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col h-screen p-sm bg-surface dark:bg-surface-dim h-full border-r-4 border-black w-64 shrink-0">
+<div class="mb-lg">
+<h1 class="font-headline-md text-headline-md font-black text-on-surface">GOWESBARENG</h1>
+<div class="mt-sm flex items-center gap-xs">
+<img class="w-10 h-10 border-2 border-black object-cover bg-surface-variant" data-alt="A stylized, high-contrast avatar of a cyclist wearing a neon helmet, rendered in a brutalist graphic style with thick black outlines and vibrant flat colors. The background is a solid bright color to enhance the neon aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5Dj6VdckSLINIImdGBV-mU4tALjInYYJQ8H1VPxxTYhcvodKJt3gpoU8SUmlI2oafAAq7WXDolbhSHUAb2a9Ra4-1aZ0OT6IyYaPCqPSVoabi9pqPDU_vQe9kzD-BQUYqO1CLONcCorA4jAi_n8dhddmPgy-615AYT-1bdC115Tnfz5QXfZm22B8sLiF7B4PIAPeoXTD6Kf8Asyi9PWMwD7snNYIaokNe2wXg4gGExm9DwmylNQJui29tYcQRNQ1NgZ6LMrat38aW"/>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">ADMIN_01</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">System Ops</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-xs flex-grow">
+<!-- DASHBOARD -->
+<a class="text-on-surface hover:bg-surface-variant flex items-center p-sm mb-xs border-4 border-transparent hover:border-black hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-transform active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-sm" data-icon="terminal">terminal</span>
+                DASHBOARD
+            </a>
+<!-- VERIFICATION (Active State based on intent) -->
+<a class="bg-secondary-container text-on-secondary-container border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center p-sm mb-xs transition-transform active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-sm" data-icon="policy">policy</span>
+                VERIFICATION
+            </a>
+<!-- DISCOVER -->
+<a class="text-on-surface hover:bg-surface-variant flex items-center p-sm mb-xs border-4 border-transparent hover:border-black hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-transform active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-sm" data-icon="explore">explore</span>
+                DISCOVER
+            </a>
+<!-- LEADERBOARD -->
+<a class="text-on-surface hover:bg-surface-variant flex items-center p-sm mb-xs border-4 border-transparent hover:border-black hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-transform active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-sm" data-icon="equalizer">equalizer</span>
+                LEADERBOARD
+            </a>
+<!-- SETTINGS -->
+<a class="text-on-surface hover:bg-surface-variant flex items-center p-sm mb-xs border-4 border-transparent hover:border-black hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-transform active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-sm" data-icon="settings">settings</span>
+                SETTINGS
+            </a>
+</div>
+<div class="mt-auto">
+<a class="text-on-surface hover:bg-surface-variant flex items-center p-sm mb-xs border-4 border-transparent hover:border-black hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-transform active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-sm" data-icon="help">help</span>
+                HELP
+            </a>
+<a class="text-on-surface hover:bg-surface-variant flex items-center p-sm mb-xs border-4 border-transparent hover:border-black hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-transform active:scale-95 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined mr-sm" data-icon="logout">logout</span>
+                LOGOUT
+            </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-grow overflow-y-auto bg-surface p-grid-margin">
+<!-- TopAppBar (Mobile Only) -->
+<header class="md:hidden flex justify-between items-center w-full px-grid-margin py-md bg-primary dark:bg-primary-fixed-dim border-b-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-grid-margin">
+<span class="font-display-lg-mobile text-display-lg-mobile font-extrabold uppercase tracking-tighter text-on-primary">GOWESBARENG</span>
+<div class="flex gap-sm">
+<span class="material-symbols-outlined text-on-primary" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-primary" data-icon="person">person</span>
+</div>
+</header>
+<div class="max-w-6xl mx-auto">
+<div class="flex justify-between items-end mb-lg border-b-4 border-black pb-sm">
+<div>
+<h2 class="font-display-lg text-display-lg md:font-display-lg text-on-surface uppercase tracking-tighter">VERIFICATION QUEUE</h2>
+<p class="font-label-md text-label-md text-on-surface-variant mt-xs uppercase">PENDING RIDES: 142</p>
+</div>
+<div class="hidden md:flex gap-sm">
+<span class="material-symbols-outlined text-on-surface p-xs border-4 border-black hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all cursor-pointer bg-primary-container" data-icon="refresh">refresh</span>
+<span class="material-symbols-outlined text-on-surface p-xs border-4 border-black hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all cursor-pointer bg-surface-variant" data-icon="filter_list">filter_list</span>
+</div>
+</div>
+<!-- Queue Items (Bento Grid Style) -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-grid-margin">
+<!-- Queue Item 1 -->
+<div class="bg-surface-container-lowest border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-75 group relative overflow-hidden">
+<div class="absolute top-0 right-0 bg-primary-container text-on-primary-container border-b-4 border-l-4 border-black px-sm py-xs font-label-md text-label-md z-10">
+                        ID: #RIDE-8892
+                    </div>
+<div class="flex flex-col md:flex-row h-full">
+<!-- Thumbnail/Data Block -->
+<div class="w-full md:w-2/5 border-b-4 md:border-b-0 md:border-r-4 border-black bg-surface-variant relative h-48 md:h-auto">
+<img class="w-full h-full object-cover filter grayscale contrast-125" data-alt="A high-contrast, brutalist-style digital map rendering of a cycling route in Jakarta. The route is highlighted in thick neon lime green against a stark black and dark grey city grid. Large, jagged waypoints mark the start and end. The aesthetic is heavily stylized, resembling a tactical display." data-location="Jakarta" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4h0TQct_XpgiYylDn-5rMwsOMP-jmjKXCE80Cy9JpV1SYqijTFcFANWOP2PCs3fbdVGVus6vTjTMKQ0e-rusnF0bmMEyPF7y2Rz0o67MxpSIKRT7Tsy_mpj80q-bDNyYEePFBz1xmS7Dqu617SNY7ghhxy_XnT_4x-3YvvL4iP6Aq8dgrAWDB-ThHYRP8hm_Q1b-Sw_PqaMKTBVDBLdIApMGWMILLK-hI-qXLPAAH4yaYuawTdE8gCvwTjgYVl5bzOc2bj1rfZl0e"/>
+<div class="absolute bottom-0 left-0 w-full bg-black/80 text-white p-xs flex justify-between font-label-sm text-label-sm border-t-4 border-black">
+<span>DIST: 42.5KM</span>
+<span>SPD: 28KM/H</span>
+</div>
+</div>
+<!-- Info & Action Block -->
+<div class="w-full md:w-3/5 p-sm flex flex-col justify-between bg-surface-container-lowest">
+<div>
+<h3 class="font-headline-md text-headline-md font-bold uppercase mb-xs">Morning Sprint - SCBD</h3>
+<div class="flex items-center gap-xs mb-sm">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="person">person</span>
+<span class="font-label-md text-label-md">USER_X99 (Lv. 12)</span>
+</div>
+<div class="grid grid-cols-2 gap-xs mb-sm border-t-4 border-b-4 border-black py-xs">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">ELEVATION</p>
+<p class="font-label-md text-label-md font-bold text-error">ERR: NO DATA</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">HEART RATE</p>
+<p class="font-label-md text-label-md font-bold">145 BPM AVG</p>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="grid grid-cols-2 gap-xs mt-auto">
+<button class="bg-primary-container text-on-primary-container border-4 border-black p-xs font-label-md text-label-md font-bold uppercase hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[0px] active:translate-y-[0px] active:shadow-none transition-all flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined" data-icon="check">check</span> APPROVE [OK]
+                                </button>
+<button class="bg-error text-on-error border-4 border-black p-xs font-label-md text-label-md font-bold uppercase hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[0px] active:translate-y-[0px] active:shadow-none transition-all flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined" data-icon="close">close</span> REJECT [X]
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Queue Item 2 (Flagged) -->
+<div class="bg-error-container text-on-error-container border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex flex-col hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-75 group relative overflow-hidden">
+<div class="absolute top-0 right-0 bg-error text-on-error border-b-4 border-l-4 border-black px-sm py-xs font-label-md text-label-md z-10 animate-pulse">
+                        FLAGGED: SPEED_ANOMALY
+                    </div>
+<div class="flex flex-col md:flex-row h-full">
+<div class="w-full md:w-2/5 border-b-4 md:border-b-0 md:border-r-4 border-black bg-surface-variant relative h-48 md:h-auto">
+<img class="w-full h-full object-cover filter contrast-150" data-alt="A highly stylized, brutalist representation of a mountain biking trail profile. Thick, jagged black lines graph the elevation against a stark white and neon cyan background. A large red exclamation mark is superimposed over an impossibly steep section of the graph. High contrast, technical aesthetic." data-location="Bogor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDd6ek3U2B9F_HNR3TgL1Ax9AQjZJthpRI4kLUbigyKBcbLB7Bj14kHH76nRdcnlvDfgX_rKURI3KsCxVjgncWccxyHrLNo2vzWc_9aIa34-ZeO7kpgjAMBvsmvmdfRfm4L2Ii_aqA-8X7VxpsTVaDHhVcO_R9x9wRHWaO6X0BoCbuM_Hu3nimnIqzDwijziKSNpCLKz3TdpA1DD8SOU_f2ajYvHco8LywLWw6LKluH4Qmf11mQ0xNZMtv7H1kBVz39DXJ_bHf0aOKY"/>
+<div class="absolute bottom-0 left-0 w-full bg-black text-error p-xs flex justify-between font-label-sm text-label-sm border-t-4 border-black">
+<span>DIST: 12.1KM</span>
+<span>SPD: 85KM/H !</span>
+</div>
+</div>
+<div class="w-full md:w-3/5 p-sm flex flex-col justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md font-bold uppercase mb-xs">Downhill Madness</h3>
+<div class="flex items-center gap-xs mb-sm">
+<span class="material-symbols-outlined text-on-error-container" data-icon="warning">warning</span>
+<span class="font-label-md text-label-md">NEW_RIDER_04</span>
+</div>
+<div class="bg-black text-primary-container p-xs border-4 border-black mb-sm font-label-sm text-label-sm font-mono overflow-x-hidden whitespace-nowrap">
+                                    &gt; WARN: MAX_SPEED_EXCEEDS_VEHICLE_LIMIT<br/>
+                                    &gt; ACTION_REQ: MANUAL_REVIEW
+                                </div>
+</div>
+<!-- Action Buttons -->
+<div class="grid grid-cols-2 gap-xs mt-auto">
+<button class="bg-surface-container text-on-surface border-4 border-black p-xs font-label-md text-label-md font-bold uppercase hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[0px] active:translate-y-[0px] active:shadow-none transition-all flex items-center justify-center gap-xs opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined" data-icon="check">check</span> APPROVE [OK]
+                                </button>
+<button class="bg-error text-on-error border-4 border-black p-xs font-label-md text-label-md font-bold uppercase hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-[0px] active:translate-y-[0px] active:shadow-none transition-all flex items-center justify-center gap-xs shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<span class="material-symbols-outlined" data-icon="close">close</span> REJECT [X]
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-primary dark:bg-primary-fixed-dim border-t-4 border-black flex justify-around items-center p-sm z-50">
+<a class="text-on-primary opacity-80 flex flex-col items-center" href="#">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</a>
+<a class="text-on-primary underline decoration-4 underline-offset-8 flex flex-col items-center" href="#">
+<span class="material-symbols-outlined" data-icon="policy">policy</span>
+</a>
+<a class="text-on-primary opacity-80 flex flex-col items-center" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+</a>
+<a class="text-on-primary opacity-80 flex flex-col items-center" href="#">
+<span class="material-symbols-outlined" data-icon="equalizer">equalizer</span>
+</a>
+</nav>
+</body></html>

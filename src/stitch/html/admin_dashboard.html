@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GowesBareng - Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800;900&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;family=Hanken+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f9fbe5",
+                        "surface": "#f9fbe5",
+                        "on-primary-fixed": "#171e00",
+                        "on-surface": "#1a1d10",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "background": "#f9fbe5",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e2e4cf",
+                        "outline-variant": "#c5c9ac",
+                        "inverse-on-surface": "#f1f2dc",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#ffdbd1",
+                        "secondary": "#ac2e00",
+                        "tertiary-fixed-dim": "#00dbe9",
+                        "on-tertiary-container": "#00777f",
+                        "on-surface-variant": "#444932",
+                        "tertiary-container": "#bbf9ff",
+                        "surface-container": "#eef0da",
+                        "on-secondary-fixed": "#3b0900",
+                        "primary-fixed": "#caf300",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#5f7400",
+                        "primary-container": "#d4ff00",
+                        "inverse-surface": "#2f3223",
+                        "surface-container-highest": "#e2e4cf",
+                        "primary": "#536600",
+                        "surface-container-low": "#f4f5df",
+                        "on-background": "#1a1d10",
+                        "surface-tint": "#536600",
+                        "inverse-primary": "#b0d500",
+                        "tertiary": "#006970",
+                        "primary-fixed-dim": "#b0d500",
+                        "on-secondary-container": "#fffbff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#002022",
+                        "on-secondary-fixed-variant": "#862200",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#3e4c00",
+                        "secondary-container": "#d73b00",
+                        "secondary-fixed-dim": "#ffb5a0",
+                        "outline": "#757a60",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e8ead4",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#dadcc6",
+                        "tertiary-fixed": "#7df4ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "lg": "48px",
+                        "xl": "80px",
+                        "grid-gutter": "16px",
+                        "grid-margin": "24px",
+                        "sm": "16px",
+                        "md": "24px",
+                        "xs": "8px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "label-md": ["Space Mono"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "label-sm": ["Space Mono"],
+                        "headline-lg": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["48px", { "lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.1", "fontWeight": "700" }],
+                        "display-lg": ["72px", { "lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "label-md": ["14px", { "lineHeight": "1.0", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.1", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .neo-brutal-shadow {
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+        }
+        .neo-brutal-shadow-hover:hover {
+            box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+            transform: translate(-2px, -2px);
+        }
+        .neo-brutal-shadow-active:active {
+            box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
+            transform: translate(4px, 4px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<div class="flex h-screen w-full">
+<!-- SideNav Container -->
+<aside class="hidden md:flex flex-col h-screen p-sm h-full border-r-4 border-black w-64 bg-surface dark:bg-surface-dim shrink-0 z-10 sticky top-0">
+<!-- Header -->
+<div class="mb-lg border-b-4 border-black pb-md">
+<div class="font-headline-md text-headline-md font-black text-on-surface mb-xs tracking-tighter">
+                    GOWESBARENG<span class="text-primary-fixed">.ADMIN</span>
+</div>
+<div class="flex items-center gap-xs mt-sm">
+<div class="w-10 h-10 border-4 border-black bg-secondary-container neo-brutal-shadow flex items-center justify-center overflow-hidden shrink-0">
+<img class="w-full h-full object-cover grayscale" data-alt="A close up, high contrast black and white portrait of an urban cyclist wearing mirrored sunglasses and a sleek helmet. The lighting is harsh and directional, emphasizing the sharp angles of the helmet and the reflection in the glasses. The background is a stark, textured concrete wall, fitting the neo-brutalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTCOVjm5tAU5wWbTf9-i-OwzeosrOgCo6I3QHy6YoCH7AkCwyYf7doHTok1bozYDVi959e2qzYUIoBE-bUuynaLNf1EGgZF0cVFzLgQm61GFGAZYsG5rs0qgXIkGjTbZSSpjqK9DRdV5iS1jz0JjKBAH-3MdaAK6Gn_Q0nXN0xH6bmtCdVvyMUkG8gtBRzKqPl7jTlE6OEWLsvfzdUaHKz5L7TZ7ex3c7pMYkW8iaHQSjGACLb8zhZVBh76_AZvyd48SOyx1dRnj5e"/>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface">CYCLIST_01</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant opacity-80 uppercase">Level 42 | Elite</div>
+</div>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 overflow-y-auto">
+<ul class="space-y-xs">
+<!-- Active Link -->
+<li>
+<a class="bg-secondary-container text-on-secondary-container border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center p-sm mb-xs font-label-md text-label-md uppercase transition-transform active:scale-95 group" href="#">
+<span class="material-symbols-outlined mr-sm font-bold" style="font-variation-settings: 'FILL' 1;">terminal</span>
+                            DASHBOARD
+                            <span class="material-symbols-outlined ml-auto opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+</a>
+</li>
+<!-- Inactive Links -->
+<li>
+<a class="text-on-surface hover:bg-surface-variant flex items-center p-sm mb-xs border-4 border-transparent hover:border-black hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-label-md text-label-md uppercase transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined mr-sm" style="font-variation-settings: 'FILL' 0;">directions_bike</span>
+                            ACTIVITY
+                        </a>
+</li>
+<li>
+<a class="text-on-surface hover:bg-surface-variant flex items-center p-sm mb-xs border-4 border-transparent hover:border-black hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-label-md text-label-md uppercase transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined mr-sm" style="font-variation-settings: 'FILL' 0;">explore</span>
+                            DISCOVER
+                        </a>
+</li>
+<li>
+<a class="text-on-surface hover:bg-surface-variant flex items-center p-sm mb-xs border-4 border-transparent hover:border-black hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-label-md text-label-md uppercase transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined mr-sm" style="font-variation-settings: 'FILL' 0;">equalizer</span>
+                            LEADERBOARD
+                        </a>
+</li>
+<li>
+<a class="text-on-surface hover:bg-surface-variant flex items-center p-sm mb-xs border-4 border-transparent hover:border-black hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-label-md text-label-md uppercase transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined mr-sm" style="font-variation-settings: 'FILL' 0;">settings</span>
+                            SETTINGS
+                        </a>
+</li>
+</ul>
+</nav>
+<!-- CTA -->
+<div class="mt-auto pt-md border-t-4 border-black">
+<button class="w-full bg-primary-fixed text-on-primary-fixed border-4 border-black neo-brutal-shadow p-sm font-label-md text-label-md uppercase neo-brutal-shadow-hover neo-brutal-shadow-active transition-all duration-75 flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined font-bold">add_circle</span>
+                    NEW_RIDE
+                </button>
+</div>
+<!-- Footer Links -->
+<div class="mt-sm space-y-xs">
+<a class="text-on-surface hover:bg-surface-variant flex items-center p-xs border-4 border-transparent font-label-sm text-label-sm uppercase transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined mr-xs text-[18px]">help</span>
+                    HELP
+                </a>
+<a class="text-on-surface hover:bg-surface-variant flex items-center p-xs border-4 border-transparent font-label-sm text-label-sm uppercase transition-transform active:scale-95 text-error" href="#">
+<span class="material-symbols-outlined mr-xs text-[18px]">logout</span>
+                    LOGOUT
+                </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto bg-surface-bright w-full">
+<!-- Mobile Top Bar (Visible only on md) -->
+<header class="md:hidden flex justify-between items-center w-full px-grid-margin py-md bg-primary border-b-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sticky top-0 z-20">
+<div class="font-display-lg-mobile text-display-lg-mobile font-extrabold uppercase tracking-tighter text-on-primary leading-none">
+                    GB<span class="text-primary-fixed text-[0.5em] align-top">.ADM</span>
+</div>
+<button class="text-on-primary border-4 border-black bg-black p-xs neo-brutal-shadow active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all">
+<span class="material-symbols-outlined text-surface-bright">menu</span>
+</button>
+</header>
+<div class="p-grid-margin md:p-lg lg:p-xl max-w-7xl mx-auto space-y-xl">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:justify-between md:items-end border-b-4 border-black pb-sm gap-sm">
+<div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg font-black uppercase tracking-tighter leading-none mb-xs">
+                            SYSTEM <br/><span class="text-outline">OVERVIEW</span>
+</h1>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase bg-primary-fixed inline-block px-xs border-2 border-black">Live Data Stream Active</p>
+</div>
+<div class="flex gap-sm">
+<button class="bg-surface border-4 border-black p-sm neo-brutal-shadow neo-brutal-shadow-hover neo-brutal-shadow-active transition-all font-label-md text-label-md uppercase flex items-center gap-xs">
+<span class="material-symbols-outlined">refresh</span> Sync
+                        </button>
+<button class="bg-secondary-container text-on-secondary-container border-4 border-black p-sm neo-brutal-shadow neo-brutal-shadow-hover neo-brutal-shadow-active transition-all font-label-md text-label-md uppercase flex items-center gap-xs">
+<span class="material-symbols-outlined">download</span> Report
+                        </button>
+</div>
+</div>
+<!-- Metrics Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-grid-gutter">
+<!-- Metric 1 -->
+<div class="bg-surface-container-lowest border-4 border-black p-md neo-brutal-shadow flex flex-col justify-between h-48 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-16 h-16 bg-primary-fixed border-l-4 border-b-4 border-black flex items-center justify-center transform translate-x-4 -translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform">
+<span class="material-symbols-outlined text-on-primary-fixed text-3xl font-bold">groups</span>
+</div>
+<h3 class="font-label-md text-label-md uppercase text-on-surface-variant font-bold">Total Riders</h3>
+<div>
+<div class="font-display-lg-mobile text-display-lg-mobile font-black tracking-tighter leading-none">14,209</div>
+<div class="font-label-sm text-label-sm mt-xs text-primary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] font-bold">trending_up</span> +12% this week
+                            </div>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="bg-primary-fixed border-4 border-black p-md neo-brutal-shadow flex flex-col justify-between h-48 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-16 h-16 bg-black border-l-4 border-b-4 border-black flex items-center justify-center transform translate-x-4 -translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform">
+<span class="material-symbols-outlined text-primary-fixed text-3xl font-bold">event</span>
+</div>
+<h3 class="font-label-md text-label-md uppercase text-on-primary-fixed font-bold">Active Events</h3>
+<div>
+<div class="font-display-lg-mobile text-display-lg-mobile font-black tracking-tighter leading-none text-on-primary-fixed">342</div>
+<div class="font-label-sm text-label-sm mt-xs text-on-surface font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] font-bold">error</span> 5 require approval
+                            </div>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="bg-surface-container-lowest border-4 border-black p-md neo-brutal-shadow flex flex-col justify-between h-48 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-16 h-16 bg-tertiary-fixed border-l-4 border-b-4 border-black flex items-center justify-center transform translate-x-4 -translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform">
+<span class="material-symbols-outlined text-on-tertiary-fixed text-3xl font-bold">route</span>
+</div>
+<h3 class="font-label-md text-label-md uppercase text-on-surface-variant font-bold">Distance Logged</h3>
+<div>
+<div class="font-display-lg-mobile text-display-lg-mobile font-black tracking-tighter leading-none">89.4k <span class="text-headline-md">KM</span></div>
+<div class="font-label-sm text-label-sm mt-xs text-primary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] font-bold">trending_up</span> Across 1.2k routes
+                            </div>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="bg-secondary-fixed border-4 border-black p-md neo-brutal-shadow flex flex-col justify-between h-48 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-16 h-16 bg-black border-l-4 border-b-4 border-black flex items-center justify-center transform translate-x-4 -translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform">
+<span class="material-symbols-outlined text-secondary-fixed text-3xl font-bold">warning</span>
+</div>
+<h3 class="font-label-md text-label-md uppercase text-on-secondary-fixed font-bold">Flagged Posts</h3>
+<div>
+<div class="font-display-lg-mobile text-display-lg-mobile font-black tracking-tighter leading-none text-on-secondary-fixed">17</div>
+<div class="font-label-sm text-label-sm mt-xs text-secondary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] font-bold">priority_high</span> Immediate Action Req
+                            </div>
+</div>
+</div>
+</section>
+<!-- Post Management Section -->
+<section>
+<div class="flex justify-between items-end mb-sm border-b-4 border-black pb-xs">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-black uppercase tracking-tighter">Content <span class="text-outline">Queue</span></h2>
+<div class="font-label-md text-label-md bg-black text-surface-bright px-sm py-xs border-4 border-black">PRIORITY: HIGH</div>
+</div>
+<!-- Table Wrapper for scrolling -->
+<div class="border-4 border-black bg-surface-container-lowest neo-brutal-shadow overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead>
+<tr class="bg-surface-variant border-b-4 border-black font-label-md text-label-md uppercase">
+<th class="p-md border-r-4 border-black w-16">ID</th>
+<th class="p-md border-r-4 border-black w-1/4">User</th>
+<th class="p-md border-r-4 border-black w-2/4">Content Snippet</th>
+<th class="p-md border-r-4 border-black w-32 text-center">Flags</th>
+<th class="p-md text-center w-48">Action</th>
+</tr>
+</thead>
+<tbody class="font-body-md">
+<!-- Row 1 -->
+<tr class="border-b-4 border-black hover:bg-surface-bright transition-colors group">
+<td class="p-md border-r-4 border-black font-label-md font-bold">#4092</td>
+<td class="p-md border-r-4 border-black">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 border-2 border-black bg-primary-fixed shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A small, square avatar portrait of a cyclist with a bright neon green helmet. Harsh, contrasting shadows cover half the face, highlighting the jawline. The background is pure white." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiGf16q7e3MAd-MblZEyut2lPclIoHHwVJvGhlbV78o1n74fs-ZmAdiHEjNCN1rqLBEFmq9MOWcMv2uSrbNRWXQwtjnv8sGAo1_HS6omh7k9KsY5hZQMJcVqBh910fdLm1Bf5o_MRKHvvw5p-rWH2crGY-eoSR8abZc8PINQqZBE5gf35qM8DNCRiUbO-6FU6K-Z_NFiVIjfFxlcXcNyVDEah-KJqcsPqz8JhReLpIHHp7VoN_3jpCFjnVFbfDOzdr8ueGJEnxYuFw"/>
+</div>
+<div>
+<div class="font-bold">URBAN_RIDER_X</div>
+<div class="font-label-sm text-on-surface-variant">@urbanx</div>
+</div>
+</div>
+</td>
+<td class="p-md border-r-4 border-black text-on-surface-variant">
+                                        "Found a sketchy shortcut through the old industrial park. Gate was locked but easy to bypass..."
+                                    </td>
+<td class="p-md border-r-4 border-black text-center">
+<span class="inline-block bg-error text-on-error font-label-sm px-2 py-1 border-2 border-black font-bold">3 REPORTS</span>
+</td>
+<td class="p-md text-center">
+<div class="flex gap-xs justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-surface border-4 border-black p-xs hover:bg-black hover:text-surface-bright transition-colors" title="Review">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+<button class="bg-error text-on-error border-4 border-black px-sm py-xs font-label-md uppercase font-bold neo-brutal-shadow hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-x-[0px] active:translate-y-[0px] active:shadow-none transition-all">
+                                                TAKE DOWN
+                                            </button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b-4 border-black hover:bg-surface-bright transition-colors group">
+<td class="p-md border-r-4 border-black font-label-md font-bold">#4091</td>
+<td class="p-md border-r-4 border-black">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 border-2 border-black bg-tertiary-fixed shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A small, square avatar portrait of a person wearing a cycling cap backwards. The image is high contrast with a strong cyan tint. The background is a stark, textured concrete wall." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsBqAoppCMXgGmwrFdSWkKX8yiiOG4FJPCXTkW_epdgsydPT_Dn1rQ0TigcF6q_YoP-xX9oZE2azdJ61PCb2L9sL0gdVzmtdruv6HyKgz42mcvSu4h446K9ZeSHfO8UZc62p48z6GcPx8VLlipqR7MzMxyX1iNO4KFCjfgVJ2D10FIGAZKi7rtcbp9Mf3aR8TCCoJ0CoipTsXztWfYFtjBo_VO0h5PlPukWLxKCr-hUlCjb0Yzn24JnWul8YcEWKKeNPSVtN4iPoZn"/>
+</div>
+<div>
+<div class="font-bold">SPEED_DEMON</div>
+<div class="font-label-sm text-on-surface-variant">@sd_races</div>
+</div>
+</div>
+</td>
+<td class="p-md border-r-4 border-black text-on-surface-variant">
+                                        "Selling custom modified e-bike controllers. DM for details. Completely unlocks top speed."
+                                    </td>
+<td class="p-md border-r-4 border-black text-center">
+<span class="inline-block bg-error text-on-error font-label-sm px-2 py-1 border-2 border-black font-bold">5 REPORTS</span>
+</td>
+<td class="p-md text-center">
+<div class="flex gap-xs justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-surface border-4 border-black p-xs hover:bg-black hover:text-surface-bright transition-colors" title="Review">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+<button class="bg-error text-on-error border-4 border-black px-sm py-xs font-label-md uppercase font-bold neo-brutal-shadow hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-x-[0px] active:translate-y-[0px] active:shadow-none transition-all">
+                                                TAKE DOWN
+                                            </button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="p-md border-r-4 border-black font-label-md font-bold">#4088</td>
+<td class="p-md border-r-4 border-black">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 border-2 border-black bg-secondary-fixed shrink-0 flex items-center justify-center font-bold text-lg">
+                                                G
+                                            </div>
+<div>
+<div class="font-bold">GRAVEL_KING</div>
+<div class="font-label-sm text-on-surface-variant">@gravel_k</div>
+</div>
+</div>
+</td>
+<td class="p-md border-r-4 border-black text-on-surface-variant">
+                                        [Image Attachment: Blurred photo of an unauthorized trail building activity] "Making some new lines in the preserve."
+                                    </td>
+<td class="p-md border-r-4 border-black text-center">
+<span class="inline-block bg-secondary-container text-on-secondary-container font-label-sm px-2 py-1 border-2 border-black font-bold">1 REPORT</span>
+</td>
+<td class="p-md text-center">
+<div class="flex gap-xs justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-surface border-4 border-black p-xs hover:bg-black hover:text-surface-bright transition-colors" title="Review">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+<button class="bg-error text-on-error border-4 border-black px-sm py-xs font-label-md uppercase font-bold neo-brutal-shadow hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-x-[0px] active:translate-y-[0px] active:shadow-none transition-all">
+                                                TAKE DOWN
+                                            </button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Spacer for bottom scrolling -->
+<div class="h-16"></div>
+</div>
+</main>
+</div>
+</body></html>

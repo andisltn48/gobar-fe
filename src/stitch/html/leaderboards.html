@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GowesBareng Leaderboards</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&amp;family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f9fbe5",
+                        "surface": "#f9fbe5",
+                        "on-primary-fixed": "#171e00",
+                        "on-surface": "#1a1d10",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "background": "#f9fbe5",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e2e4cf",
+                        "outline-variant": "#c5c9ac",
+                        "inverse-on-surface": "#f1f2dc",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#ffdbd1",
+                        "secondary": "#ac2e00",
+                        "tertiary-fixed-dim": "#00dbe9",
+                        "on-tertiary-container": "#00777f",
+                        "on-surface-variant": "#444932",
+                        "tertiary-container": "#bbf9ff",
+                        "surface-container": "#eef0da",
+                        "on-secondary-fixed": "#3b0900",
+                        "primary-fixed": "#caf300",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#5f7400",
+                        "primary-container": "#d4ff00",
+                        "inverse-surface": "#2f3223",
+                        "surface-container-highest": "#e2e4cf",
+                        "primary": "#536600",
+                        "surface-container-low": "#f4f5df",
+                        "on-background": "#1a1d10",
+                        "surface-tint": "#536600",
+                        "inverse-primary": "#b0d500",
+                        "tertiary": "#006970",
+                        "primary-fixed-dim": "#b0d500",
+                        "on-secondary-container": "#fffbff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#002022",
+                        "on-secondary-fixed-variant": "#862200",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#3e4c00",
+                        "secondary-container": "#d73b00",
+                        "secondary-fixed-dim": "#ffb5a0",
+                        "outline": "#757a60",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e8ead4",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#dadcc6",
+                        "tertiary-fixed": "#7df4ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "lg": "48px",
+                        "xl": "80px",
+                        "grid-gutter": "16px",
+                        "grid-margin": "24px",
+                        "sm": "16px",
+                        "md": "24px",
+                        "xs": "8px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "label-md": ["Space Mono"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "label-sm": ["Space Mono"],
+                        "headline-lg": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["48px", { "lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.1", "fontWeight": "700" }],
+                        "display-lg": ["72px", { "lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "label-md": ["14px", { "lineHeight": "1.0", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "1.0", "fontWeight": "500" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.1", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f9fbe5; /* surface */
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col md:flex-row">
+<!-- Desktop Side Navigation -->
+<aside class="hidden md:flex flex-col h-screen p-sm border-r-4 border-black w-64 bg-surface flex-shrink-0 sticky top-0">
+<div class="mb-lg">
+<h1 class="font-headline-md text-headline-md font-black text-on-surface">CYCLIST_01</h1>
+<p class="font-label-md text-label-md mt-xs">Level 42 | Elite</p>
+</div>
+<nav class="flex-grow space-y-sm">
+<a class="text-on-surface hover:bg-surface-variant flex items-center p-sm mb-xs border-4 border-transparent hover:border-black hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined mr-sm">terminal</span>
+<span class="font-label-md text-label-md">DASHBOARD</span>
+</a>
+<a class="text-on-surface hover:bg-surface-variant flex items-center p-sm mb-xs border-4 border-transparent hover:border-black hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined mr-sm">directions_bike</span>
+<span class="font-label-md text-label-md">ACTIVITY</span>
+</a>
+<a class="text-on-surface hover:bg-surface-variant flex items-center p-sm mb-xs border-4 border-transparent hover:border-black hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined mr-sm">explore</span>
+<span class="font-label-md text-label-md">DISCOVER</span>
+</a>
+<a class="bg-secondary-container text-on-secondary-container border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center p-sm mb-xs transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined mr-sm">equalizer</span>
+<span class="font-label-md text-label-md">LEADERBOARD</span>
+</a>
+<a class="text-on-surface hover:bg-surface-variant flex items-center p-sm mb-xs border-4 border-transparent hover:border-black hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined mr-sm">settings</span>
+<span class="font-label-md text-label-md">SETTINGS</span>
+</a>
+</nav>
+<div class="mt-auto space-y-sm">
+<button class="w-full bg-primary-fixed text-on-primary-fixed border-4 border-black p-sm shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] font-headline-md text-headline-md hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-y-0 active:shadow-none transition-all">
+                NEW_RIDE
+            </button>
+<div class="flex flex-col space-y-xs pt-sm border-t-4 border-black mt-sm">
+<a class="flex items-center text-on-surface hover:bg-surface-variant p-xs border-4 border-transparent hover:border-black" href="#">
+<span class="material-symbols-outlined mr-xs">help</span>
+<span class="font-label-md text-label-md">HELP</span>
+</a>
+<a class="flex items-center text-on-surface hover:bg-surface-variant p-xs border-4 border-transparent hover:border-black" href="#">
+<span class="material-symbols-outlined mr-xs">logout</span>
+<span class="font-label-md text-label-md">LOGOUT</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full flex flex-col">
+<!-- Mobile Top Nav -->
+<header class="md:hidden flex justify-between items-center w-full px-grid-margin py-md bg-primary border-b-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<div class="font-display-lg-mobile text-display-lg-mobile font-extrabold uppercase tracking-tighter text-on-primary">
+                GOWESBARENG
+            </div>
+<div class="flex space-x-sm">
+<button class="text-on-primary hover:text-primary-container transition-colors">
+<span class="material-symbols-outlined text-[32px]">notifications</span>
+</button>
+<button class="text-on-primary hover:text-primary-container transition-colors">
+<span class="material-symbols-outlined text-[32px]">person</span>
+</button>
+</div>
+</header>
+<!-- Leaderboard Header & Tabs -->
+<div class="p-grid-margin md:p-lg border-b-4 border-black bg-surface-bright">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-lg">
+<div>
+<h2 class="font-display-lg text-display-lg uppercase font-black tracking-tighter">LEADERBOARD</h2>
+<p class="font-headline-md text-headline-md mt-xs bg-black text-white inline-block px-2">CURRENT SEASON: ALPHA</p>
+</div>
+<!-- Filter Tabs -->
+<div class="flex mt-md md:mt-0 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] bg-white">
+<button class="px-md py-sm bg-primary-fixed text-black font-headline-md text-headline-md border-r-4 border-black hover:bg-primary-container transition-colors">
+                        DISTANCE (KM)
+                    </button>
+<button class="px-md py-sm bg-white text-black font-headline-md text-headline-md hover:bg-surface-variant transition-colors">
+                        ELEVATION (M)
+                    </button>
+</div>
+</div>
+</div>
+<!-- Leaderboard List -->
+<div class="p-grid-margin md:p-lg bg-background flex-grow">
+<div class="flex flex-col space-y-md max-w-5xl mx-auto">
+<!-- Rank 1 -->
+<div class="flex items-center bg-primary-fixed border-4 border-black p-sm md:p-md shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all">
+<div class="w-16 h-16 md:w-24 md:h-24 bg-black flex items-center justify-center border-4 border-black shrink-0 mr-sm md:mr-md">
+<span class="font-display-lg text-display-lg text-primary-fixed">1</span>
+</div>
+<div class="w-12 h-12 md:w-16 md:h-16 border-4 border-black shrink-0 mr-sm md:mr-md bg-white overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A stylized, high-contrast black and white avatar of a cyclist in profile, thick lines, neon green accents, neo-brutalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIxAoshxeBU09QAhH_-ofuVRraw_R7iJYBiVQtfBcTy8rEDSTwo0OrFU87xcTJP5K0NnQtyEim2H9kYvaLWy30HxXysDE_fgAoFmvVemEDD7flWYiAtGvbOwV42Le4hJnOIwGRxKlWcwXMTcNK-Oda5cJnGb6N4txXaW2GTxdsg1wznAJwCes2UxEAvP7by0E_mrTpyIO-BMTBy7kYmh9MyCZz8DOIw7Tb0VfzdP-6S6wpJtOipb0iDqm81Cw1HIqAcXNk3VypeaE5"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-headline-lg text-headline-lg uppercase font-black">STREET_PUNX</h3>
+<div class="flex items-center mt-1">
+<span class="material-symbols-outlined text-[16px] mr-1 text-black" title="Strava Verified">verified</span>
+<span class="font-label-md text-label-md uppercase bg-black text-white px-1">VERIFIED</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<div class="font-display-lg text-display-lg-mobile md:text-display-lg font-black tracking-tighter">1,240</div>
+<div class="font-label-md text-label-md uppercase">KM RODE</div>
+</div>
+</div>
+<!-- Rank 2 -->
+<div class="flex items-center bg-secondary-container border-4 border-black p-sm md:p-md shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all">
+<div class="w-16 h-16 md:w-24 md:h-24 bg-black flex items-center justify-center border-4 border-black shrink-0 mr-sm md:mr-md">
+<span class="font-display-lg text-display-lg text-secondary-container">2</span>
+</div>
+<div class="w-12 h-12 md:w-16 md:h-16 border-4 border-black shrink-0 mr-sm md:mr-md bg-white overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A stylized, high-contrast black and white avatar of a cyclist with goggles, thick lines, neon orange accents, neo-brutalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-YRDL4v65bYdbp6jMLOpUU0ogw5nqAE8Gpmi4s5cMRf6oGpAas5w97CbbaPmIwRkzqtwRoA95lKw6rwNHauWdJyfwHVsNuXAIe2dg54AO9AGU0Y8D-VzbO9bVwo9lg_w-JJs7TM-ucknPYs4HvoWAB4MipSEc_5HXm1VUCFcJenhjXeVAH6NRLfJaavJazPikeKTvOx6xuMma0aBHFzV3KoSpu69EvfwALLNyXUjI1i5KzxA4xqFnkd-yvu5dfIaf0r6ZIbEifX07"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-headline-lg text-headline-lg uppercase font-black text-white">NIGHT_RIDER</h3>
+<div class="flex items-center mt-1">
+<span class="material-symbols-outlined text-[16px] mr-1 text-white" title="Strava Verified">verified</span>
+<span class="font-label-md text-label-md uppercase bg-white text-black px-1">VERIFIED</span>
+</div>
+</div>
+<div class="text-right shrink-0 text-white">
+<div class="font-display-lg text-display-lg-mobile md:text-display-lg font-black tracking-tighter">985</div>
+<div class="font-label-md text-label-md uppercase">KM RODE</div>
+</div>
+</div>
+<!-- Rank 3 -->
+<div class="flex items-center bg-tertiary-fixed border-4 border-black p-sm md:p-md shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all">
+<div class="w-16 h-16 md:w-24 md:h-24 bg-black flex items-center justify-center border-4 border-black shrink-0 mr-sm md:mr-md">
+<span class="font-display-lg text-display-lg text-tertiary-fixed">3</span>
+</div>
+<div class="w-12 h-12 md:w-16 md:h-16 border-4 border-black shrink-0 mr-sm md:mr-md bg-white overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A stylized, high-contrast black and white avatar of a mountain biker, thick lines, neon cyan accents, neo-brutalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWy1CBdKT7VR7g4rQ5EnF3qSXxDmJQqhHlNbM9WsrtYa6q_ukj1STVwSrLeKEnFuk4HaEPemQC14BdTMOp3xbayg3PuC9NcshpacKK4BxzkC4wh_JNcE2o5KyZnrfr8-XJE4MBuV1AW8wZ-l90V_D8FeOKdXJsrTbNZa6YmgJlmus4nuGwcXOjNKQyHMOzgPucL86xsoRQhcYFS7VcByjJnvgLWwc_-moLeOxerWyGJllrsQUG0IhgbFzi5BWnvVSlgtBbRn_aRCkh"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-headline-lg text-headline-lg uppercase font-black text-black">GRAVEL_KING</h3>
+</div>
+<div class="text-right shrink-0 text-black">
+<div class="font-display-lg text-display-lg-mobile md:text-display-lg font-black tracking-tighter">842</div>
+<div class="font-label-md text-label-md uppercase">KM RODE</div>
+</div>
+</div>
+<!-- Ranks 4-5 (Standard) -->
+<div class="flex flex-col space-y-sm mt-md border-t-4 border-black pt-md">
+<div class="flex items-center bg-white border-4 border-black p-sm shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all">
+<div class="w-12 h-12 bg-surface-variant flex items-center justify-center border-4 border-black shrink-0 mr-sm">
+<span class="font-headline-md text-headline-md font-black">4</span>
+</div>
+<div class="flex-grow">
+<h3 class="font-headline-md text-headline-md uppercase font-black">VELO_CITY</h3>
+</div>
+<div class="text-right shrink-0">
+<div class="font-headline-lg text-headline-lg font-black">710 <span class="font-label-md text-label-md ml-1">KM</span></div>
+</div>
+</div>
+<div class="flex items-center bg-white border-4 border-black p-sm shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all">
+<div class="w-12 h-12 bg-surface-variant flex items-center justify-center border-4 border-black shrink-0 mr-sm">
+<span class="font-headline-md text-headline-md font-black">5</span>
+</div>
+<div class="flex-grow">
+<h3 class="font-headline-md text-headline-md uppercase font-black">GEAR_SMASH</h3>
+</div>
+<div class="text-right shrink-0">
+<div class="font-headline-lg text-headline-lg font-black">695 <span class="font-label-md text-label-md ml-1">KM</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile Bottom Nav -->
+<nav class="md:hidden fixed bottom-0 w-full bg-surface border-t-4 border-black flex justify-around p-sm z-50 shadow-[0px_-4px_0px_0px_rgba(0,0,0,1)]">
+<a class="flex flex-col items-center text-on-surface p-1" href="#">
+<span class="material-symbols-outlined text-[24px]">terminal</span>
+</a>
+<a class="flex flex-col items-center text-on-surface p-1" href="#">
+<span class="material-symbols-outlined text-[24px]">directions_bike</span>
+</a>
+<a class="flex flex-col items-center p-1 bg-secondary-container text-on-secondary-container border-4 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] -mt-4" href="#">
+<span class="material-symbols-outlined text-[32px]">equalizer</span>
+</a>
+<a class="flex flex-col items-center text-on-surface p-1" href="#">
+<span class="material-symbols-outlined text-[24px]">explore</span>
+</a>
+<a class="flex flex-col items-center text-on-surface p-1" href="#">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+</a>
+</nav>
+</body></html>

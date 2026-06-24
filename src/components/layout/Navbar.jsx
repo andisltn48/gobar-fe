@@ -1,0 +1,201 @@
+import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+
+const navLinks = [
+  { to: '/', label: 'Feed' },
+  { to: '/events', label: 'Events' },
+  { to: '/leaderboard', label: 'Rankings' },
+];
+
+export default function Navbar() {
+  const { user, logout } = useAuth();
+  const { pathname } = useLocation();
+
+  const linksToShow = [...navLinks];
+  if (user) {
+    linksToShow.push({ to: '/profile', label: 'Profile' });
+  }
+
+  return (
+    <>
+      {/* Desktop Main Header (Hidden on Mobile) */}
+      <header className="bg-[#536600] border-b-4 border-black sticky top-0 z-50 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-75 hidden md:block">
+        <div className="w-full flex justify-between items-center px-6 py-4">
+          {/* Logo */}
+          <Link
+            to="/"
+            className="font-display text-headline-lg font-black text-white uppercase tracking-tighter hover:text-[#caf300] transition-neo"
+          >
+            GOWESBARENG
+          </Link>
+
+          {/* Desktop Nav */}
+          <nav className="flex items-center gap-6">
+            <div className="flex gap-4">
+              {linksToShow.map((link) => {
+                const isActive = pathname === link.to;
+                return (
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    className={
+                      isActive
+                        ? "font-mono text-label-md text-[#171e00] underline decoration-4 underline-offset-8 bg-[#caf300] p-2 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-75 active:translate-x-0 active:translate-y-0 active:shadow-none cursor-pointer"
+                        : "font-mono text-label-md text-white hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all duration-75 active:translate-x-0 active:translate-y-0 active:shadow-none p-2 border-4 border-transparent hover:border-black hover:bg-[#caf300] hover:text-[#171e00] cursor-pointer"
+                    }
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* Notifications & Profile/Logout */}
+            <div className="flex items-center gap-4 border-l-4 border-black pl-6">
+              {user && (
+                <Link
+                  to="/post"
+                  className="bg-[#caf300] hover:bg-[#caf300]/95 text-[#171e00] border-4 border-black px-4 py-2 font-display text-sm font-black uppercase flex items-center gap-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-0 active:translate-y-0 active:shadow-none transition-all mr-2"
+                >
+                  <span className="material-symbols-outlined font-black text-[18px]">add</span>
+                  POST
+                </Link>
+              )}
+              <button
+                aria-label="Notifications"
+                className="p-2 border-4 border-black bg-surface-container-lowest text-on-surface shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-[#caf300] hover:text-[#171e00] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-x-0 active:translate-y-0 active:shadow-none transition-all duration-75 flex items-center justify-center"
+              >
+                <span className="material-symbols-outlined text-[24px]">notifications</span>
+              </button>
+
+              {user ? (
+                <div className="flex items-center gap-2">
+                  {/* User Name Badge */}
+                  <div className="bg-[#caf300] text-[#171e00] font-mono text-label-md font-black uppercase px-4 py-2 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                    {user.name}
+                  </div>
+                  
+                  {/* Logout Button */}
+                  <button
+                    onClick={logout}
+                    aria-label="Logout"
+                    className="p-2 border-4 border-black bg-surface-container-lowest text-on-surface shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-[#caf300] hover:text-[#171e00] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-x-0 active:translate-y-0 active:shadow-none transition-all duration-75 flex items-center justify-center"
+                  >
+                    <span className="material-symbols-outlined text-[24px]">logout</span>
+                  </button>
+                </div>
+              ) : (
+                <Link
+                  to="/login"
+                  className="px-4 py-2 border-4 border-black bg-surface-container-lowest text-on-surface font-mono text-label-md font-black uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-[#caf300] hover:text-[#171e00] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-x-0 active:translate-y-0 active:shadow-none transition-all duration-75 flex items-center justify-center"
+                >
+                  Login
+                </Link>
+              )}
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      {/* Mobile Top Header / Breadcrumb (Only visible on Mobile) */}
+      <div className="flex md:hidden justify-between items-center bg-[#536600] border-b-4 border-black px-6 py-4 sticky top-0 z-50 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+        {user ? (
+          <>
+            <span className="bg-[#caf300] text-[#171e00] font-mono text-xs font-black uppercase px-3 py-1.5 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] max-w-[180px] truncate">
+              {user.name}
+            </span>
+            <button
+              onClick={logout}
+              className="px-3 py-1.5 border-2 border-black bg-white text-black font-mono text-[10px] font-black uppercase shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-[#caf300] transition-all flex items-center gap-1.5 cursor-pointer"
+            >
+              <i className="fa-solid fa-right-from-bracket"></i>
+              LOGOUT
+            </button>
+          </>
+        ) : (
+          <>
+            <Link
+              to="/"
+              className="font-display text-xl font-black text-white uppercase tracking-tighter"
+            >
+              GOWESBARENG
+            </Link>
+            <Link
+              to="/login"
+              className="px-3 py-1.5 border-2 border-black bg-white text-black font-mono text-[10px] font-black uppercase shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-[#caf300] transition-all cursor-pointer"
+            >
+              Login
+            </Link>
+          </>
+        )}
+      </div>
+
+      {/* Mobile Bottom Navigation Bar (Only visible on Mobile) */}
+      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-[#536600] border-t-4 border-black flex md:hidden justify-around items-center h-16 shadow-[0_-4px_0px_0px_rgba(0,0,0,1)]">
+        {/* Feed Link */}
+        <Link
+          to="/"
+          className={`flex items-center justify-center w-12 h-12 transition-all border-2 ${
+            pathname === '/'
+              ? 'bg-[#caf300] border-black text-[#171e00] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+              : 'border-transparent text-white'
+          }`}
+        >
+          <i className="fa-solid fa-rss text-lg"></i>
+        </Link>
+
+        {/* Events Link */}
+        <Link
+          to="/events"
+          className={`flex items-center justify-center w-12 h-12 transition-all border-2 ${
+            pathname === '/events'
+              ? 'bg-[#caf300] border-black text-[#171e00] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+              : 'border-transparent text-white'
+          }`}
+        >
+          <i className="fa-solid fa-calendar-days text-lg"></i>
+        </Link>
+
+        {/* Post Link (Create) */}
+        {user && (
+          <Link
+            to="/post"
+            className={`flex items-center justify-center w-12 h-12 transition-all border-2 ${
+              pathname === '/post'
+                ? 'bg-[#caf300] border-black text-[#171e00] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                : 'border-transparent text-white'
+            }`}
+          >
+            <i className="fa-solid fa-circle-plus text-lg"></i>
+          </Link>
+        )}
+
+        {/* Rankings Link */}
+        <Link
+          to="/leaderboard"
+          className={`flex items-center justify-center w-12 h-12 transition-all border-2 ${
+            pathname === '/leaderboard'
+              ? 'bg-[#caf300] border-black text-[#171e00] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+              : 'border-transparent text-white'
+          }`}
+        >
+          <i className="fa-solid fa-trophy text-lg"></i>
+        </Link>
+
+        {/* Profile Link */}
+        {user && (
+          <Link
+            to="/profile"
+            className={`flex items-center justify-center w-12 h-12 transition-all border-2 ${
+              pathname === '/profile'
+                ? 'bg-[#caf300] border-black text-[#171e00] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                : 'border-transparent text-white'
+            }`}
+          >
+            <i className="fa-solid fa-user text-lg"></i>
+          </Link>
+        )}
+      </nav>
+    </>
+  );
+}
