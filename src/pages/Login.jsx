@@ -21,7 +21,11 @@ export default function Login() {
       const res = await api.post('/auth/login', form);
       const user = res.data.data;
       login(user, user.token);
-      navigate('/');
+      if (user.role === 'admin') {
+        navigate('/admin');
+      } else {
+        navigate('/');
+      }
     } catch (err) {
       setError(extractError(err));
     } finally {

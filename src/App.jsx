@@ -1,6 +1,7 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import SidebarAdmin from './components/layout/SidebarAdmin';
 import ProtectedRoute from './components/common/ProtectedRoute';
 import Login from './pages/Login';
 import Home from './pages/user/Home';
@@ -25,6 +26,26 @@ function App() {
     );
   }
 
+  const isAdminRoute = pathname.startsWith('/admin');
+
+  if (isAdminRoute) {
+    return (
+      <div className="min-h-screen flex bg-background text-on-background">
+        <SidebarAdmin />
+        <div className="flex-1 flex flex-col min-h-screen">
+          <main className="flex-1 max-w-6xl w-full mx-auto px-6 py-12">
+            <Routes>
+              <Route path="/admin" element={<ProtectedRoute><DashboardReports /></ProtectedRoute>} />
+              <Route path="/admin/users" element={<ProtectedRoute><ManageUsers /></ProtectedRoute>} />
+              <Route path="/admin/events" element={<ProtectedRoute><ManageEvents /></ProtectedRoute>} />
+              <Route path="/admin/leaderboard" element={<ProtectedRoute><ManageLeaderboard /></ProtectedRoute>} />
+            </Routes>
+          </main>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-background text-on-background pb-16 md:pb-0">
       <Navbar />
@@ -35,10 +56,6 @@ function App() {
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           <Route path="/events" element={<ProtectedRoute><Event /></ProtectedRoute>} />
           <Route path="/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} />
-          <Route path="/admin" element={<ProtectedRoute><DashboardReports /></ProtectedRoute>} />
-          <Route path="/admin/users" element={<ProtectedRoute><ManageUsers /></ProtectedRoute>} />
-          <Route path="/admin/events" element={<ProtectedRoute><ManageEvents /></ProtectedRoute>} />
-          <Route path="/admin/leaderboard" element={<ProtectedRoute><ManageLeaderboard /></ProtectedRoute>} />
         </Routes>
       </main>
       <Footer />

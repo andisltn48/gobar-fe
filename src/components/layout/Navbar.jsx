@@ -24,8 +24,18 @@ export default function Navbar() {
     markAllAsRead,
   } = useNotification(user);
 
-  const linksToShow = [...navLinks];
-  if (user) {
+  const isAdminPath = pathname.startsWith('/admin');
+
+  const linksToShow = isAdminPath
+    ? [
+        { to: '/admin', label: 'Dashboard' },
+        { to: '/admin/users', label: 'Users' },
+        { to: '/admin/events', label: 'Events' },
+        { to: '/admin/leaderboard', label: 'Leaderboard' },
+      ]
+    : [...navLinks];
+
+  if (!isAdminPath && user) {
     linksToShow.push({ to: '/profile', label: 'Profile' });
   }
 
@@ -36,10 +46,10 @@ export default function Navbar() {
         <div className="w-full flex justify-between items-center px-6 py-4">
           {/* Logo */}
           <Link
-            to="/"
+            to={isAdminPath ? "/admin" : "/"}
             className="font-display text-headline-lg font-black text-white uppercase tracking-tighter hover:text-[#caf300] transition-neo"
           >
-            GOWESBARENG
+            {isAdminPath ? "GOWESBARENG // ADMIN" : "GOWESBARENG"}
           </Link>
 
           {/* Desktop Nav */}
@@ -65,13 +75,23 @@ export default function Navbar() {
 
             {/* Actions: Post + Bell + User */}
             <div className="flex items-center gap-4 border-l-4 border-black pl-6">
-              {user && (
+              {user && !isAdminPath && (
                 <Link
                   to="/post"
                   className="bg-[#caf300] hover:bg-[#caf300]/95 text-[#171e00] border-4 border-black px-4 py-2 font-display text-sm font-black uppercase flex items-center gap-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-0 active:translate-y-0 active:shadow-none transition-all mr-2"
                 >
                   <span className="material-symbols-outlined font-black text-[18px]">add</span>
                   POST
+                </Link>
+              )}
+
+              {user && isAdminPath && (
+                <Link
+                  to="/"
+                  className="bg-[#caf300] hover:bg-[#caf300]/95 text-[#171e00] border-4 border-black px-4 py-2 font-display text-sm font-black uppercase flex items-center gap-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-0 active:translate-y-0 active:shadow-none transition-all mr-2"
+                >
+                  <span className="material-symbols-outlined font-black text-[18px]">logout</span>
+                  EXIT ADMIN
                 </Link>
               )}
 
@@ -135,7 +155,7 @@ export default function Navbar() {
         {user ? (
           <>
             <span className="bg-[#caf300] text-[#171e00] font-mono text-xs font-black uppercase px-3 py-1.5 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] max-w-[160px] truncate">
-              {user.name}
+              {isAdminPath ? `ADMIN: ${user.name}` : user.name}
             </span>
 
             <div className="flex items-center gap-2">
@@ -198,63 +218,120 @@ export default function Navbar() {
 
       {/* ─── Mobile Bottom Navigation ────────────────────────────────────────── */}
       <nav className="fixed bottom-0 left-0 right-0 z-50 bg-[#536600] border-t-4 border-black flex md:hidden justify-around items-center h-16 shadow-[0_-4px_0px_0px_rgba(0,0,0,1)]">
-        <Link
-          to="/"
-          className={`flex items-center justify-center w-12 h-12 transition-all border-2 ${
-            pathname === '/'
-              ? 'bg-[#caf300] border-black text-[#171e00] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
-              : 'border-transparent text-white'
-          }`}
-        >
-          <i className="fa-solid fa-rss text-lg" />
-        </Link>
+        {isAdminPath ? (
+          <>
+            <Link
+              to="/admin"
+              className={`flex items-center justify-center w-12 h-12 transition-all border-2 ${
+                pathname === '/admin'
+                  ? 'bg-[#caf300] border-black text-[#171e00] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                  : 'border-transparent text-white'
+              }`}
+            >
+              <i className="fa-solid fa-gauge text-lg" />
+            </Link>
 
-        <Link
-          to="/events"
-          className={`flex items-center justify-center w-12 h-12 transition-all border-2 ${
-            pathname === '/events'
-              ? 'bg-[#caf300] border-black text-[#171e00] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
-              : 'border-transparent text-white'
-          }`}
-        >
-          <i className="fa-solid fa-calendar-days text-lg" />
-        </Link>
+            <Link
+              to="/admin/users"
+              className={`flex items-center justify-center w-12 h-12 transition-all border-2 ${
+                pathname === '/admin/users'
+                  ? 'bg-[#caf300] border-black text-[#171e00] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                  : 'border-transparent text-white'
+              }`}
+            >
+              <i className="fa-solid fa-users text-lg" />
+            </Link>
 
-        {user && (
-          <Link
-            to="/post"
-            className={`flex items-center justify-center w-12 h-12 transition-all border-2 ${
-              pathname === '/post'
-                ? 'bg-[#caf300] border-black text-[#171e00] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
-                : 'border-transparent text-white'
-            }`}
-          >
-            <i className="fa-solid fa-circle-plus text-lg" />
-          </Link>
-        )}
+            <Link
+              to="/admin/events"
+              className={`flex items-center justify-center w-12 h-12 transition-all border-2 ${
+                pathname === '/admin/events'
+                  ? 'bg-[#caf300] border-black text-[#171e00] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                  : 'border-transparent text-white'
+              }`}
+            >
+              <i className="fa-solid fa-calendar-days text-lg" />
+            </Link>
 
-        <Link
-          to="/leaderboard"
-          className={`flex items-center justify-center w-12 h-12 transition-all border-2 ${
-            pathname === '/leaderboard'
-              ? 'bg-[#caf300] border-black text-[#171e00] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
-              : 'border-transparent text-white'
-          }`}
-        >
-          <i className="fa-solid fa-trophy text-lg" />
-        </Link>
+            <Link
+              to="/admin/leaderboard"
+              className={`flex items-center justify-center w-12 h-12 transition-all border-2 ${
+                pathname === '/admin/leaderboard'
+                  ? 'bg-[#caf300] border-black text-[#171e00] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                  : 'border-transparent text-white'
+              }`}
+            >
+              <i className="fa-solid fa-trophy text-lg" />
+            </Link>
 
-        {user && (
-          <Link
-            to="/profile"
-            className={`flex items-center justify-center w-12 h-12 transition-all border-2 ${
-              pathname === '/profile'
-                ? 'bg-[#caf300] border-black text-[#171e00] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
-                : 'border-transparent text-white'
-            }`}
-          >
-            <i className="fa-solid fa-user text-lg" />
-          </Link>
+            <Link
+              to="/"
+              className="flex items-center justify-center w-12 h-12 transition-all border-2 border-transparent text-[#ffa2a2] hover:text-white"
+            >
+              <i className="fa-solid fa-house text-lg" />
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link
+              to="/"
+              className={`flex items-center justify-center w-12 h-12 transition-all border-2 ${
+                pathname === '/'
+                  ? 'bg-[#caf300] border-black text-[#171e00] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                  : 'border-transparent text-white'
+              }`}
+            >
+              <i className="fa-solid fa-rss text-lg" />
+            </Link>
+
+            <Link
+              to="/events"
+              className={`flex items-center justify-center w-12 h-12 transition-all border-2 ${
+                pathname === '/events'
+                  ? 'bg-[#caf300] border-black text-[#171e00] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                  : 'border-transparent text-white'
+              }`}
+            >
+              <i className="fa-solid fa-calendar-days text-lg" />
+            </Link>
+
+            {user && (
+              <Link
+                to="/post"
+                className={`flex items-center justify-center w-12 h-12 transition-all border-2 ${
+                  pathname === '/post'
+                    ? 'bg-[#caf300] border-black text-[#171e00] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                    : 'border-transparent text-white'
+                }`}
+              >
+                <i className="fa-solid fa-circle-plus text-lg" />
+              </Link>
+            )}
+
+            <Link
+              to="/leaderboard"
+              className={`flex items-center justify-center w-12 h-12 transition-all border-2 ${
+                pathname === '/leaderboard'
+                  ? 'bg-[#caf300] border-black text-[#171e00] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                  : 'border-transparent text-white'
+              }`}
+            >
+              <i className="fa-solid fa-trophy text-lg" />
+            </Link>
+
+            {user && (
+              <Link
+                to="/profile"
+                className={`flex items-center justify-center w-12 h-12 transition-all border-2 ${
+                  pathname === '/profile'
+                    ? 'bg-[#caf300] border-black text-[#171e00] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                    : 'border-transparent text-white'
+                }`}
+              >
+                <i className="fa-solid fa-user text-lg" />
+              </Link>
+            )}
+          </>
         )}
       </nav>
     </>
