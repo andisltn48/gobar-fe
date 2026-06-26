@@ -232,10 +232,10 @@ export default function ManageUsers() {
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[300] flex items-center justify-center p-4">
           <div className="w-full max-w-md relative animate-slide-up">
-            <Card className="p-6 relative">
-              <div className="absolute top-0 left-0 right-0 h-[6px] bg-[#caf300]" />
+            <Card className="p-6 relative max-h-[85vh] flex flex-col">
+              <div className="absolute top-0 left-0 right-0 h-[6px] bg-[#caf300] shrink-0" />
               
-              <div className="flex justify-between items-center mb-6">
+              <div className="flex justify-between items-center mb-6 shrink-0">
                 <h3 className="font-display text-xl font-black uppercase tracking-tight">
                   {modalType === 'add' ? 'Add New User' : 'Edit User'}
                 </h3>
@@ -248,12 +248,12 @@ export default function ManageUsers() {
               </div>
 
               {modalError && (
-                <div className="bg-error-container border-2 border-black p-2 mb-4 animate-shake">
+                <div className="bg-error-container border-2 border-black p-2 mb-4 animate-shake shrink-0">
                   <p className="font-mono text-[10px] text-on-error-container">{modalError}</p>
                 </div>
               )}
 
-              <form onSubmit={handleFormSubmit} className="space-y-4">
+              <form onSubmit={handleFormSubmit} className="space-y-4 overflow-y-auto pr-2 flex-1">
                 <Input
                   label="Name"
                   placeholder="e.g. John Doe"

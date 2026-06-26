@@ -225,9 +225,7 @@ export default function Post() {
             ) : (
               // Empty/Input Mode
               <>
-                <span className="material-symbols-outlined text-[64px] text-black mb-2 select-none">
-                  add_photo_alternate
-                </span>
+                <i className="fa-regular fa-image text-[64px] text-black mb-2 select-none" />
                 <span className="font-display text-lg font-black uppercase tracking-tight text-black">
                   DRAG & DROP PHOTO/VIDEO
                 </span>
@@ -335,7 +333,7 @@ export default function Post() {
                 Distance (KM)
               </label>
               <div className="relative flex items-center">
-                <span className="absolute left-4 material-symbols-outlined text-gray-500">route</span>
+                <i className="fa-solid fa-route absolute left-4 text-gray-500 text-[18px]" />
                 <input
                   type="number"
                   step="0.1"
@@ -354,7 +352,7 @@ export default function Post() {
                 Duration (HH:MM)
               </label>
               <div className="relative flex items-center">
-                <span className="absolute left-4 material-symbols-outlined text-gray-500">timer</span>
+                <i className="fa-solid fa-stopwatch absolute left-4 text-gray-500 text-[18px]" />
                 <input
                   type="text"
                   placeholder="00:00"
@@ -372,7 +370,7 @@ export default function Post() {
                 Elevation (M)
               </label>
               <div className="relative flex items-center">
-                <span className="absolute left-4 material-symbols-outlined text-gray-500">landscape</span>
+                <i className="fa-solid fa-mountain absolute left-4 text-gray-500 text-[18px]" />
                 <input
                   type="number"
                   placeholder="0000"
@@ -392,7 +390,7 @@ export default function Post() {
             className="w-full bg-[#caf300] hover:bg-[#caf300]/95 text-black border-4 border-black px-6 py-4 font-display text-md sm:text-xl font-black uppercase tracking-wider shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[0px] active:translate-y-[0px] active:shadow-none flex items-center justify-center gap-2"
           >
             {submitting ? 'POSTING...' : 'POST TO FEED'}
-            <span className="material-symbols-outlined font-black text-xl">send</span>
+            <i className="fa-solid fa-paper-plane text-lg" />
           </button>
         </div>
       </form>

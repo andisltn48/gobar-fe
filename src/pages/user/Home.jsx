@@ -118,7 +118,7 @@ export default function Home() {
 
         {/* Search Riders Bar */}
         <div className="relative flex items-center h-12 border-4 border-black bg-white focus-within:bg-[#caf300] focus-within:-translate-y-0.5 focus-within:-translate-x-0.5 focus-within:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-75 w-full md:w-64 mt-4 md:mt-0">
-          <span className="material-symbols-outlined ml-2 text-on-surface select-none">search</span>
+          <i className="fa-solid fa-magnifying-glass ml-2 text-on-surface select-none" />
           <input
             type="text"
             placeholder="SEARCH RIDERS..."
@@ -255,13 +255,11 @@ export default function Home() {
                     post.liked_by_me ? 'bg-[#caf300]/30 text-[#171e00]' : 'text-on-surface'
                   }`}
                 >
-                  <span
-                    className={`material-symbols-outlined text-[13px] sm:text-[20px] ${
-                      post.liked_by_me ? 'text-red-600 fill-current' : 'text-on-surface'
+                  <i
+                    className={`fa-solid fa-fire text-[13px] sm:text-[18px] ${
+                      post.liked_by_me ? 'text-red-600' : 'text-on-surface'
                     }`}
-                  >
-                    local_fire_department
-                  </span>
+                  />
                   <span className="hidden sm:inline">KUDOS</span>
                   <span className="bg-black text-white px-1 py-0.5 sm:px-2 sm:py-0.5 text-[7px] sm:text-[10px] font-bold rounded-sm ml-0.5 sm:ml-1">
                     {post.likes_count || 0}
@@ -279,7 +277,7 @@ export default function Home() {
                     expandedComments[post.id] ? 'bg-[#caf300]/10' : ''
                   }`}
                 >
-                  <span className="material-symbols-outlined text-[13px] sm:text-[20px]">forum</span>
+                  <i className="fa-solid fa-comments text-[13px] sm:text-[18px]" />
                   <span className="hidden sm:inline">COMM</span>
                   <span className="bg-black text-white px-1 py-0.5 sm:px-2 sm:py-0.5 text-[7px] sm:text-[10px] font-bold rounded-sm ml-0.5 sm:ml-1">
                     {post.comments_count || 0}
@@ -290,7 +288,7 @@ export default function Home() {
                   onClick={() => handleShare(post.id)}
                   className="w-12 sm:w-16 py-3 sm:py-4 flex justify-center items-center hover:bg-[#caf300] transition-all text-on-surface"
                 >
-                  <span className="material-symbols-outlined text-[13px] sm:text-[20px]">share</span>
+                  <i className="fa-solid fa-share-nodes text-[13px] sm:text-[18px]" />
                 </button>
               </div>
 

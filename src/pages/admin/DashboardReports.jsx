@@ -1,9 +1,9 @@
 import Card from '../../components/common/Card';
 
 const stats = [
-  { label: 'Total User Aktif', value: '142', icon: '👥', accent: 'border-l-[#caf300]' },
-  { label: 'Postingan Hari Ini', value: '18', icon: '📸', accent: 'border-l-[#006970]' },
-  { label: 'Event Berjalan', value: '5', icon: '🗓', accent: 'border-l-[#ac2e00]' },
+  { label: 'Total User Aktif', value: '142', icon: 'fa-solid fa-users', accent: 'border-l-[#caf300]' },
+  { label: 'Postingan Hari Ini', value: '18', icon: 'fa-solid fa-camera', accent: 'border-l-[#006970]' },
+  { label: 'Event Berjalan', value: '5', icon: 'fa-solid fa-calendar-days', accent: 'border-l-[#ac2e00]' },
 ];
 
 export default function DashboardReports() {
@@ -11,8 +11,8 @@ export default function DashboardReports() {
     <div>
       <div className="flex items-end gap-4 mb-4">
         <h1 className="page-header">Dashboard</h1>
-        <span className="neo-stamp mb-2">
-          📊 Reports
+        <span className="neo-stamp mb-2 flex items-center gap-1.5">
+          <i className="fa-solid fa-chart-simple text-[12px]" /> Reports
         </span>
       </div>
       <div className="neo-divider" />
@@ -27,7 +27,7 @@ export default function DashboardReports() {
                 </p>
                 <p className="font-display text-4xl text-black font-black">{stat.value}</p>
               </div>
-              <span className="text-3xl">{stat.icon}</span>
+              <i className={`${stat.icon} text-3xl text-black/70`} />
             </div>
           </Card>
         ))}

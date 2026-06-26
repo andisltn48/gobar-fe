@@ -80,7 +80,7 @@ export default function Navbar() {
                   to="/post"
                   className="bg-[#caf300] hover:bg-[#caf300]/95 text-[#171e00] border-4 border-black px-4 py-2 font-display text-sm font-black uppercase flex items-center gap-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-0 active:translate-y-0 active:shadow-none transition-all mr-2"
                 >
-                  <span className="material-symbols-outlined font-black text-[18px]">add</span>
+                  <i className="fa-solid fa-plus text-[16px]" />
                   POST
                 </Link>
               )}
@@ -90,7 +90,7 @@ export default function Navbar() {
                   to="/"
                   className="bg-[#caf300] hover:bg-[#caf300]/95 text-[#171e00] border-4 border-black px-4 py-2 font-display text-sm font-black uppercase flex items-center gap-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-x-0 active:translate-y-0 active:shadow-none transition-all mr-2"
                 >
-                  <span className="material-symbols-outlined font-black text-[18px]">logout</span>
+                  <i className="fa-solid fa-right-from-bracket text-[16px]" />
                   EXIT ADMIN
                 </Link>
               )}
@@ -103,7 +103,7 @@ export default function Navbar() {
                     onClick={toggleOpen}
                     className="relative p-2 border-4 border-black bg-surface-container-lowest text-on-surface shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-[#caf300] hover:text-[#171e00] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-x-0 active:translate-y-0 active:shadow-none transition-all duration-75 flex items-center justify-center"
                   >
-                    <span className="material-symbols-outlined text-[24px]">notifications</span>
+                    <i className="fa-solid fa-bell text-[20px]" />
                     {unreadCount > 0 && (
                       <span className="absolute -top-2 -right-2 min-w-[20px] h-5 px-1 bg-red-500 border-2 border-black text-white font-black font-mono text-[10px] flex items-center justify-center">
                         {unreadCount > 99 ? '99+' : unreadCount}
@@ -134,7 +134,7 @@ export default function Navbar() {
                     aria-label="Logout"
                     className="p-2 border-4 border-black bg-surface-container-lowest text-on-surface shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-[#caf300] hover:text-[#171e00] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-x-0 active:translate-y-0 active:shadow-none transition-all duration-75 flex items-center justify-center"
                   >
-                    <span className="material-symbols-outlined text-[24px]">logout</span>
+                    <i className="fa-solid fa-right-from-bracket text-[20px]" />
                   </button>
                 </div>
               ) : (

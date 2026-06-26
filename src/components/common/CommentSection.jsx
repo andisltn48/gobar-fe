@@ -118,7 +118,7 @@ export default function CommentSection({ postId, onCommentAdded }) {
   return (
     <div className="border-t-4 border-black bg-[#f9faf6] p-6 space-y-6">
       <div className="flex items-center gap-2">
-        <span className="material-symbols-outlined text-[20px] font-bold">forum</span>
+        <i className="fa-solid fa-comments text-[18px]" />
         <h3 className="font-mono text-xs sm:text-sm font-black uppercase tracking-wider">
           DISCUSSIONS ({comments.length})
         </h3>

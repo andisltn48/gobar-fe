@@ -179,9 +179,7 @@ export default function Leaderboard() {
           <div className="order-2 md:order-1 w-full md:w-1/3 bg-[#d73b00] border-4 border-black p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] relative flex flex-col text-center">
             <div className="flex justify-between items-center pb-4 border-b-4 border-black">
               <span className="font-display text-3xl sm:text-5xl font-black italic text-black">#2</span>
-              <span className="material-symbols-outlined text-[32px] text-black">
-                local_fire_department
-              </span>
+              <i className="fa-solid fa-fire text-[28px] text-black" />
             </div>
             <div className="py-6">
               <div className="w-20 h-20 border-4 border-black bg-white mx-auto overflow-hidden relative shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
@@ -193,7 +191,7 @@ export default function Leaderboard() {
                 </span>
                 {rank2.user?.is_verified && (
                   <div className="text-[9px] sm:text-[10px] font-mono font-black mt-2 text-black flex items-center justify-center gap-1">
-                    <span className="material-symbols-outlined text-[12px] fill-current">verified</span>
+                    <i className="fa-solid fa-circle-check text-[10px]" />
                     VERIFIED
                   </div>
                 )}
@@ -221,7 +219,7 @@ export default function Leaderboard() {
             </div>
             <div className="flex justify-between items-center pb-4 border-b-4 border-black">
               <span className="font-display text-4xl sm:text-6xl font-black italic text-black">#1</span>
-              <span className="material-symbols-outlined text-[36px] text-black">emoji_events</span>
+              <i className="fa-solid fa-trophy text-[32px] text-black" />
             </div>
             <div className="py-6">
               <div className="w-24 h-24 border-4 border-black bg-white mx-auto overflow-hidden relative shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
@@ -232,7 +230,7 @@ export default function Leaderboard() {
                   {(rank1.user?.name || 'RIDER_1').toUpperCase().replace(/\s+/g, '_')}
                 </span>
                 <div className="text-[9px] sm:text-[10px] font-mono font-black mt-2 text-[#5f7400] flex items-center justify-center gap-1">
-                  <span className="material-symbols-outlined text-[12px] fill-current">verified</span>
+                  <i className="fa-solid fa-circle-check text-[10px]" />
                   PRO VERIFIED
                 </div>
               </div>
@@ -255,7 +253,7 @@ export default function Leaderboard() {
           <div className="order-3 md:order-3 w-full md:w-1/3 bg-[#7df4ff] border-4 border-black p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] relative flex flex-col text-center">
             <div className="flex justify-between items-center pb-4 border-b-4 border-black">
               <span className="font-display text-3xl sm:text-5xl font-black italic text-black">#3</span>
-              <span className="material-symbols-outlined text-[32px] text-black">bolt</span>
+              <i className="fa-solid fa-bolt text-[28px] text-black" />
             </div>
             <div className="py-6">
               <div className="w-16 h-16 border-4 border-black bg-white mx-auto overflow-hidden relative shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
@@ -267,7 +265,7 @@ export default function Leaderboard() {
                 </span>
                 {rank3.user?.is_verified && (
                   <div className="text-[9px] sm:text-[10px] font-mono font-black mt-2 text-black flex items-center justify-center gap-1">
-                    <span className="material-symbols-outlined text-[12px] fill-current">verified</span>
+                    <i className="fa-solid fa-circle-check text-[10px]" />
                     VERIFIED
                   </div>
                 )}

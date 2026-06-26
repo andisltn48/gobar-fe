@@ -2,10 +2,10 @@ import { NavLink, Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
 const links = [
-  { to: '/admin', label: 'Dashboard', icon: 'terminal' },
-  { to: '/admin/users', label: 'Users', icon: 'group' },
-  { to: '/admin/events', label: 'Events', icon: 'explore' },
-  { to: '/admin/leaderboard', label: 'Leaderboard', icon: 'equalizer' },
+  { to: '/admin', label: 'Dashboard', icon: 'fa-solid fa-gauge' },
+  { to: '/admin/users', label: 'Users', icon: 'fa-solid fa-users' },
+  { to: '/admin/events', label: 'Events', icon: 'fa-solid fa-calendar-days' },
+  { to: '/admin/leaderboard', label: 'Leaderboard', icon: 'fa-solid fa-trophy' },
 ];
 
 export default function SidebarAdmin() {
@@ -47,7 +47,7 @@ export default function SidebarAdmin() {
                   }`
                 }
               >
-                <span className="material-symbols-outlined">{link.icon}</span>
+                <i className={`${link.icon} text-[16px] w-5 text-center`} />
                 {link.label}
               </NavLink>
             </li>
@@ -61,14 +61,14 @@ export default function SidebarAdmin() {
           to="/"
           className="flex items-center gap-xs text-[#006970] hover:bg-surface-variant p-xs border-4 border-transparent font-label text-label-sm uppercase transition-neo"
         >
-          <span className="material-symbols-outlined text-[18px]">arrow_back</span>
+          <i className="fa-solid fa-arrow-left text-[16px] w-5 text-center" />
           EXIT ADMIN
         </Link>
         <button
           onClick={logout}
           className="w-full flex items-center gap-xs text-error hover:bg-surface-variant p-xs border-4 border-transparent font-label text-label-sm uppercase transition-neo text-left"
         >
-          <span className="material-symbols-outlined text-[18px]">logout</span>
+          <i className="fa-solid fa-right-from-bracket text-[16px] w-5 text-center" />
           LOGOUT
         </button>
       </div>

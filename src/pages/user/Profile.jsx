@@ -269,12 +269,12 @@ export default function Profile() {
             onClick={handleStartEditProfile}
             className="mt-2 font-mono text-[10px] font-black uppercase border-2 border-black bg-white px-3 py-1.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-[#171e00] hover:text-[#caf300] active:translate-y-0.5 transition-all cursor-pointer inline-flex items-center gap-1"
           >
-            <span className="material-symbols-outlined text-[12px]">edit</span>
+            <i className="fa-solid fa-pen text-[10px]" />
             EDIT PROFILE
           </button>
         </div>
         <div className="relative flex items-center h-12 border-4 border-black bg-white focus-within:bg-[#caf300] focus-within:-translate-y-0.5 focus-within:-translate-x-0.5 focus-within:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-75 w-full md:w-48">
-          <span className="material-symbols-outlined ml-2 text-on-surface select-none">search</span>
+          <i className="fa-solid fa-magnifying-glass ml-2 text-on-surface select-none" />
           <input
             type="text"
             placeholder="SEARCH POSTS..."
@@ -411,13 +411,11 @@ export default function Profile() {
                     post.liked_by_me ? 'bg-[#caf300]/30 text-[#171e00]' : 'text-on-surface'
                   }`}
                 >
-                  <span
-                    className={`material-symbols-outlined text-[13px] sm:text-[20px] ${
-                      post.liked_by_me ? 'text-red-600 fill-current' : 'text-on-surface'
+                  <i
+                    className={`fa-solid fa-fire text-[13px] sm:text-[18px] ${
+                      post.liked_by_me ? 'text-red-600' : 'text-on-surface'
                     }`}
-                  >
-                    local_fire_department
-                  </span>
+                  />
                   <span className="hidden sm:inline">KUDOS</span>
                   <span className="bg-black text-white px-1 py-0.5 sm:px-2 sm:py-0.5 text-[7px] sm:text-[10px] font-bold rounded-sm ml-0.5 sm:ml-1">
                     {post.likes_count || 0}
@@ -435,7 +433,7 @@ export default function Profile() {
                     expandedComments[post.id] ? 'bg-[#caf300]/10' : ''
                   }`}
                 >
-                  <span className="material-symbols-outlined text-[13px] sm:text-[20px]">forum</span>
+                  <i className="fa-solid fa-comments text-[13px] sm:text-[18px]" />
                   <span className="hidden sm:inline">COMM</span>
                   <span className="bg-black text-white px-1 py-0.5 sm:px-2 sm:py-0.5 text-[7px] sm:text-[10px] font-bold rounded-sm ml-0.5 sm:ml-1">
                     {post.comments_count || 0}
@@ -447,7 +445,7 @@ export default function Profile() {
                   onClick={() => handleStartEdit(post)}
                   className="flex-1 border-r-4 border-black py-3 sm:py-4 flex justify-center items-center gap-1 sm:gap-2 font-mono text-[9px] sm:text-xs font-bold hover:bg-[#caf300] transition-all text-on-surface uppercase"
                 >
-                  <span className="material-symbols-outlined text-[13px] sm:text-[20px]">edit</span>
+                  <i className="fa-solid fa-pen text-[13px] sm:text-[18px]" />
                   <span className="hidden sm:inline">EDIT</span>
                 </button>
 
@@ -456,7 +454,7 @@ export default function Profile() {
                   onClick={() => handleDelete(post.id)}
                   className="flex-1 border-r-4 border-black py-3 sm:py-4 flex justify-center items-center gap-1 sm:gap-2 font-mono text-[9px] sm:text-xs font-bold hover:bg-red-500 hover:text-white transition-all text-on-surface uppercase"
                 >
-                  <span className="material-symbols-outlined text-[13px] sm:text-[20px]">delete</span>
+                  <i className="fa-solid fa-trash text-[13px] sm:text-[18px]" />
                   <span className="hidden sm:inline">DEL</span>
                 </button>
 
@@ -464,7 +462,7 @@ export default function Profile() {
                   onClick={() => handleShare(post.id)}
                   className="w-12 sm:w-16 py-3 sm:py-4 flex justify-center items-center hover:bg-[#caf300] transition-all text-on-surface"
                 >
-                  <span className="material-symbols-outlined text-[13px] sm:text-[20px]">share</span>
+                  <i className="fa-solid fa-share-nodes text-[13px] sm:text-[18px]" />
                 </button>
               </div>
 
@@ -619,7 +617,7 @@ export default function Profile() {
                   className="bg-[#caf300] hover:bg-[#caf300]/95 text-black border-4 border-black px-6 py-3 font-display text-sm font-black uppercase tracking-wider shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] active:translate-x-0 active:translate-y-0 active:shadow-none hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all cursor-pointer flex items-center gap-2"
                 >
                   {submittingEdit ? 'SAVING...' : 'SAVE CHANGES'}
-                  <span className="material-symbols-outlined text-sm font-black">save</span>
+                  <i className="fa-solid fa-floppy-disk text-xs" />
                 </button>
               </div>
             </form>
@@ -742,9 +740,7 @@ export default function Profile() {
                     </div>
                   ) : (
                     <>
-                      <span className="material-symbols-outlined text-[36px] text-black mb-1 select-none">
-                        add_a_photo
-                      </span>
+                      <i className="fa-solid fa-camera text-[32px] text-black mb-1 select-none" />
                       <span className="font-display text-sm font-black uppercase text-black">
                         DRAG PROFILE IMAGE HERE
                       </span>
@@ -775,7 +771,7 @@ export default function Profile() {
                   className="bg-[#caf300] hover:bg-[#caf300]/95 text-black border-4 border-black px-6 py-3 font-display text-sm font-black uppercase tracking-wider shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] active:translate-x-0 active:translate-y-0 active:shadow-none hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all cursor-pointer flex items-center gap-2"
                 >
                   {submittingProfile ? 'SAVING...' : 'SAVE CHANGES'}
-                  <span className="material-symbols-outlined text-sm font-black">save</span>
+                  <i className="fa-solid fa-floppy-disk text-xs" />
                 </button>
               </div>
             </form>

@@ -12,16 +12,6 @@ export default function Event() {
   const cityFilter = selectedLocation === 'ALL LOCATIONS' ? '' : selectedLocation;
   const { events, loading, error } = useEvents(cityFilter);
 
-  // Local storage to track joined events
-  const [joinedEvents, setJoinedEvents] = useState(() => {
-    try {
-      const saved = localStorage.getItem('gowesbareng_joined_events');
-      return saved ? JSON.parse(saved) : [];
-    } catch {
-      return [];
-    }
-  });
-
   const [expandedEvents, setExpandedEvents] = useState([]);
 
   const toggleExpand = (eventId) => {
@@ -30,14 +20,16 @@ export default function Event() {
     );
   };
 
-  const handleJoinToggle = (eventId) => {
-    setJoinedEvents(prev => {
-      const updated = prev.includes(eventId)
-        ? prev.filter(id => id !== eventId)
-        : [...prev, eventId];
-      localStorage.setItem('gowesbareng_joined_events', JSON.stringify(updated));
-      return updated;
-    });
+  const handleJoinToggle = (ev) => {
+    if (ev.contact) {
+      let cleanContact = ev.contact.replace(/\D/g, '');
+      if (cleanContact.startsWith('0')) {
+        cleanContact = '62' + cleanContact.slice(1);
+      }
+      if (cleanContact) {
+        window.open(`https://wa.me/${cleanContact}`, '_blank');
+      }
+    }
   };
 
   const coverImages = [
@@ -144,7 +136,7 @@ export default function Event() {
         <div className="flex flex-wrap gap-4 bg-surface border-4 border-black p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] w-full md:w-auto">
           <div className="flex-1 min-w-[200px]">
             <div className="relative flex items-center w-full h-12 border-4 border-black bg-surface-container-lowest focus-within:bg-[#caf300] focus-within:-translate-y-1 focus-within:-translate-x-1 focus-within:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-75">
-              <span className="material-symbols-outlined ml-2 text-on-surface">search</span>
+              <i className="fa-solid fa-magnifying-glass ml-2 text-on-surface" />
               <input
                 className="w-full h-full bg-transparent border-none focus:ring-0 font-label text-label-md placeholder:text-outline p-2 font-bold outline-none"
                 placeholder="Search events..."
@@ -188,7 +180,6 @@ export default function Event() {
       {/* Event Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {filteredEvents.map((ev, idx) => {
-          const isJoined = joinedEvents.includes(ev.id);
           const isExpanded = expandedEvents.includes(ev.id);
 
           return (
@@ -248,7 +239,7 @@ export default function Event() {
                   <div className="mb-6 p-4 bg-surface-container border-2 border-black font-mono text-[10px] sm:text-label-sm text-on-surface-variant uppercase animate-slide-up">
                     <div className="flex flex-wrap items-center gap-4 mb-2 pb-1 border-b border-black">
                       <span className="flex items-center gap-2">
-                        <span className="material-symbols-outlined text-[18px]">calendar_today</span>
+                        <i className="fa-solid fa-calendar text-[16px]" />
                         {new Date(ev.schedule).toLocaleDateString('id-ID', {
                           day: 'numeric',
                           month: 'long',
@@ -257,7 +248,7 @@ export default function Event() {
                       </span>
                       <span className="text-outline-variant">|</span>
                       <span className="flex items-center gap-2">
-                        <span className="material-symbols-outlined text-[18px]">schedule</span>
+                        <i className="fa-solid fa-clock text-[16px]" />
                         {new Date(ev.schedule).toLocaleTimeString('id-ID', {
                           hour: '2-digit',
                           minute: '2-digit',
@@ -273,19 +264,12 @@ export default function Event() {
                   </div>
                 )}
 
-                {/* Register Button */}
                 <button
-                  onClick={() => handleJoinToggle(ev.id)}
-                  className={`w-full py-3 sm:py-4 border-4 border-black font-label text-xs sm:text-label-md font-black uppercase tracking-widest shadow-neo active:translate-y-1 active:translate-x-1 active:shadow-none transition-all duration-75 flex justify-center items-center gap-2 group/btn ${
-                    isJoined
-                      ? 'bg-[#e2e4cf] text-[#444932] border-[#c5c9ac] hover:bg-[#eef0da]'
-                      : 'bg-[#caf300] text-[#171e00] hover:bg-[#b0d500]'
-                  }`}
+                  onClick={() => handleJoinToggle(ev)}
+                  className="w-full py-3 sm:py-4 border-4 border-black font-label text-xs sm:text-label-md font-black uppercase tracking-widest shadow-neo active:translate-y-1 active:translate-x-1 active:shadow-none transition-all duration-75 flex justify-center items-center gap-2 group/btn bg-[#caf300] text-[#171e00] hover:bg-[#b0d500]"
                 >
-                  {isJoined ? 'JOINED' : 'JOIN EVENT'}
-                  <span className="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform">
-                    {isJoined ? 'check_circle' : 'arrow_forward'}
-                  </span>
+                  JOIN EVENT
+                  <i className="fa-solid fa-arrow-right group-hover/btn:translate-x-1 transition-transform" />
                 </button>
               </div>
             </article>

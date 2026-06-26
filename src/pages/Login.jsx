@@ -38,7 +38,7 @@ export default function Login() {
       <div className="relative z-10 w-full max-w-sm">
         {/* Decorative elements */}
         <div className="absolute -top-4 -left-4 w-10 h-10 bg-primary-container border-4 border-black rotate-12 z-20 flex items-center justify-center">
-          <span className="material-symbols-outlined text-on-primary-container text-[20px]">directions_bike</span>
+          <i className="fa-solid fa-bicycle text-on-primary-container text-[18px]" />
         </div>
         <div className="absolute -top-3 -right-3 w-8 h-8 bg-secondary-container border-4 border-black -rotate-6 z-20" />
 
@@ -81,12 +81,12 @@ export default function Login() {
             <Button type="submit" className="w-full" disabled={loading}>
               {loading ? (
                 <span className="flex items-center justify-center gap-xs">
-                  <span className="material-symbols-outlined animate-spin text-[18px]">progress_activity</span>
+                  <i className="fa-solid fa-spinner fa-spin text-[18px]" />
                   Memproses...
                 </span>
               ) : (
                 <span className="flex items-center justify-center gap-xs">
-                  <span className="material-symbols-outlined text-[18px]">login</span>
+                  <i className="fa-solid fa-right-to-bracket text-[18px]" />
                   Masuk
                 </span>
               )}
