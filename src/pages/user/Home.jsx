@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { usePosts } from '../../hooks/usePost';
 import Spinner from '../../components/common/Spinner';
 import CommentSection from '../../components/common/CommentSection';
+import { showSuccess } from '../../utils/alert';
 
 export default function Home() {
   const {
@@ -41,7 +42,7 @@ export default function Home() {
   const handleShare = (postId) => {
     const url = `${window.location.origin}/post/${postId}`;
     navigator.clipboard.writeText(url);
-    alert('Tautan postingan berhasil disalin ke papan klip! 🚀');
+    showSuccess('SALIN TAUTAN', 'Tautan postingan berhasil disalin ke papan klip! 🚀');
   };
 
   // Helper to parse relative timestamp

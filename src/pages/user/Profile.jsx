@@ -4,6 +4,7 @@ import { usePosts } from '../../hooks/usePost';
 import Spinner from '../../components/common/Spinner';
 import CommentSection from '../../components/common/CommentSection';
 import api, { extractError } from '../../services/api';
+import { showSuccess, showError, showConfirm } from '../../utils/alert';
 
 export default function Profile() {
   const { user, updateUser } = useAuth();
@@ -137,18 +138,22 @@ export default function Profile() {
       });
       setEditingPost(null);
     } catch (err) {
-      alert('Failed to update post: ' + err.message);
+      showError('GAGAL UPDATE', 'Failed to update post: ' + err.message);
     } finally {
       setSubmittingEdit(false);
     }
   };
 
   const handleDelete = async (postId) => {
-    if (window.confirm('Are you absolutely sure you want to delete this ride? 💀')) {
+    const confirmed = await showConfirm(
+      'HAPUS POSTINGAN',
+      'Are you absolutely sure you want to delete this ride? 💀'
+    );
+    if (confirmed) {
       try {
         await deletePost(postId);
       } catch (err) {
-        alert('Failed to delete post: ' + err.message);
+        showError('GAGAL HAPUS', 'Failed to delete post: ' + err.message);
       }
     }
   };
@@ -177,7 +182,7 @@ export default function Profile() {
   const handleShare = (postId) => {
     const url = `${window.location.origin}/post/${postId}`;
     navigator.clipboard.writeText(url);
-    alert('Tautan postingan berhasil disalin ke papan klip! 🚀');
+    showSuccess('SALIN TAUTAN', 'Tautan postingan berhasil disalin ke papan klip! 🚀');
   };
 
   // Helper to parse relative timestamp

@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import api, { extractError } from '../../services/api';
+import { showError } from '../../utils/alert';
 import Spinner from './Spinner';
 
 export default function CommentSection({ postId, onCommentAdded }) {
@@ -51,7 +52,7 @@ export default function CommentSection({ postId, onCommentAdded }) {
         onCommentAdded();
       }
     } catch (err) {
-      alert(extractError(err));
+      showError('KOMENTAR GAGAL', extractError(err));
     } finally {
       setSubmitting(false);
     }
@@ -76,7 +77,7 @@ export default function CommentSection({ postId, onCommentAdded }) {
         onCommentAdded();
       }
     } catch (err) {
-      alert(extractError(err));
+      showError('REPLY GAGAL', extractError(err));
     } finally {
       setSubmitting(false);
     }
