@@ -9,10 +9,14 @@ import Post from './pages/user/Post';
 import Profile from './pages/user/Profile';
 import Event from './pages/user/Event';
 import Leaderboard from './pages/user/Leaderboard';
+import Marketplace from './pages/user/Marketplace';
+import MarketplaceDetail from './pages/user/MarketplaceDetail';
+import MyMarketplace from './pages/user/MyMarketplace';
 import DashboardReports from './pages/admin/DashboardReports';
 import ManageUsers from './pages/admin/ManageUsers';
 import ManageEvents from './pages/admin/ManageEvents';
 import ManageLeaderboard from './pages/admin/ManageLeaderboard';
+import ManageMarketplace from './pages/admin/ManageMarketplace';
 
 function App() {
   const { pathname } = useLocation();
@@ -39,6 +43,7 @@ function App() {
               <Route path="/admin/users" element={<ProtectedRoute><ManageUsers /></ProtectedRoute>} />
               <Route path="/admin/events" element={<ProtectedRoute><ManageEvents /></ProtectedRoute>} />
               <Route path="/admin/leaderboard" element={<ProtectedRoute><ManageLeaderboard /></ProtectedRoute>} />
+              <Route path="/admin/marketplace" element={<ProtectedRoute><ManageMarketplace /></ProtectedRoute>} />
             </Routes>
           </main>
         </div>
@@ -56,6 +61,9 @@ function App() {
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           <Route path="/events" element={<ProtectedRoute><Event /></ProtectedRoute>} />
           <Route path="/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} />
+          <Route path="/marketplace" element={<ProtectedRoute><Marketplace /></ProtectedRoute>} />
+          <Route path="/marketplace/my-items" element={<ProtectedRoute><MyMarketplace /></ProtectedRoute>} />
+          <Route path="/marketplace/:id" element={<ProtectedRoute><MarketplaceDetail /></ProtectedRoute>} />
         </Routes>
       </main>
       <Footer />

@@ -6,6 +6,7 @@ import NotificationDropdown from '../common/NotificationDropdown';
 const navLinks = [
   { to: '/', label: 'Feed' },
   { to: '/events', label: 'Events' },
+  { to: '/marketplace', label: 'Marketplace' },
   { to: '/leaderboard', label: 'Rankings' },
 ];
 
@@ -31,6 +32,7 @@ export default function Navbar() {
         { to: '/admin', label: 'Dashboard' },
         { to: '/admin/users', label: 'Users' },
         { to: '/admin/events', label: 'Events' },
+        { to: '/admin/marketplace', label: 'Marketplace' },
         { to: '/admin/leaderboard', label: 'Leaderboard' },
       ]
     : [...navLinks];
@@ -265,6 +267,17 @@ export default function Navbar() {
             </Link>
 
             <Link
+              to="/admin/marketplace"
+              className={`flex items-center justify-center w-12 h-12 transition-all border-2 ${
+                pathname === '/admin/marketplace'
+                  ? 'bg-[#caf300] border-black text-[#171e00] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                  : 'border-transparent text-white'
+              }`}
+            >
+              <i className="fa-solid fa-store text-lg" />
+            </Link>
+
+            <Link
               to="/"
               className="flex items-center justify-center w-12 h-12 transition-all border-2 border-transparent text-[#ffa2a2] hover:text-white"
             >
@@ -293,6 +306,17 @@ export default function Navbar() {
               }`}
             >
               <i className="fa-solid fa-calendar-days text-lg" />
+            </Link>
+
+            <Link
+              to="/marketplace"
+              className={`flex items-center justify-center w-12 h-12 transition-all border-2 ${
+                pathname === '/marketplace'
+                  ? 'bg-[#caf300] border-black text-[#171e00] shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                  : 'border-transparent text-white'
+              }`}
+            >
+              <i className="fa-solid fa-store text-lg" />
             </Link>
 
             {user && (

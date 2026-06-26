@@ -42,12 +42,14 @@ export default function Profile() {
   const [dragActiveProfile, setDragActiveProfile] = useState(false);
   const [profileError, setProfileError] = useState('');
   const [submittingProfile, setSubmittingProfile] = useState(false);
+  const [profileContact, setProfileContact] = useState('');
 
   const fileInputRefProfile = useRef(null);
 
   const handleStartEditProfile = () => {
     setProfileName(user?.name || '');
     setProfileCity(user?.city || '');
+    setProfileContact(user?.contact || '');
     setProfileAvatarUrl(user?.avatar_url || '');
     setEditingProfile(true);
     setProfileError('');
@@ -97,6 +99,7 @@ export default function Profile() {
       const res = await api.put('/auth/me', {
         name: profileName.trim(),
         city: profileCity.trim(),
+        contact: profileContact.trim(),
         avatar_url: profileAvatarUrl.trim(),
       });
       const updatedUser = res.data.data;
@@ -263,7 +266,7 @@ export default function Profile() {
             {user?.name || 'RIDER PROFILE'}
           </h1>
           <p className="font-mono text-[9px] sm:text-xs font-bold text-gray-700 uppercase tracking-wider">
-            EMAIL: {user?.email || 'N/A'} • CITY: {user?.city || 'N/A'} • ROLE: {user?.role || 'RIDER'}
+            EMAIL: {user?.email || 'N/A'} • CITY: {user?.city || 'N/A'} • WA: {user?.contact || '-'} • ROLE: {user?.role || 'RIDER'}
           </p>
           <button
             onClick={handleStartEditProfile}
@@ -667,6 +670,18 @@ export default function Profile() {
                   value={profileCity}
                   onChange={(e) => setProfileCity(e.target.value)}
                   required
+                />
+              </div>
+
+              {/* Contact */}
+              <div className="flex flex-col">
+                <label className="font-mono text-[10px] font-black text-gray-700 uppercase mb-1">WHATSAPP NUMBER (E.G. 628123456789)</label>
+                <input
+                  type="text"
+                  className="border-4 border-black p-2 font-mono text-xs font-bold focus:bg-white outline-none"
+                  placeholder="e.g. 628123456789"
+                  value={profileContact}
+                  onChange={(e) => setProfileContact(e.target.value)}
                 />
               </div>
 

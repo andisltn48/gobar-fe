@@ -5,6 +5,7 @@ const links = [
   { to: '/admin', label: 'Dashboard', icon: 'fa-solid fa-gauge' },
   { to: '/admin/users', label: 'Users', icon: 'fa-solid fa-users' },
   { to: '/admin/events', label: 'Events', icon: 'fa-solid fa-calendar-days' },
+  { to: '/admin/marketplace', label: 'Marketplace', icon: 'fa-solid fa-store' },
   { to: '/admin/leaderboard', label: 'Leaderboard', icon: 'fa-solid fa-trophy' },
 ];
 
