@@ -17,6 +17,7 @@ export default function MarketplaceDetail() {
   const [error, setError] = useState('');
   const [activePhotoIdx, setActivePhotoIdx] = useState(0);
   const [deleting, setDeleting] = useState(false);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -135,7 +136,8 @@ export default function MarketplaceDetail() {
               <img
                 src={item.photos[activePhotoIdx]}
                 alt=""
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover cursor-zoom-in"
+                onClick={() => setIsLightboxOpen(true)}
               />
             ) : (
               <i className="fa-solid fa-bicycle text-8xl text-black/10" />
@@ -253,6 +255,54 @@ export default function MarketplaceDetail() {
           </div>
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {isLightboxOpen && showPhotos && (
+        <div className="fixed inset-0 bg-black/95 z-[400] flex items-center justify-center p-4">
+          <button
+            onClick={() => setIsLightboxOpen(false)}
+            className="absolute top-4 right-4 text-white text-3xl font-black border-2 border-white w-10 h-10 flex items-center justify-center hover:bg-white hover:text-black transition-colors z-[410] cursor-pointer"
+          >
+            ✕
+          </button>
+          
+          <div className="relative max-w-4xl max-h-[85vh] flex items-center justify-center">
+            <img
+              src={item.photos[activePhotoIdx]}
+              alt=""
+              className="max-w-full max-h-[85vh] object-contain border-4 border-white shadow-2xl"
+            />
+
+            {/* Lightbox Navigation */}
+            {item.photos.length > 1 && (
+              <>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setActivePhotoIdx((prev) =>
+                      prev === 0 ? item.photos.length - 1 : prev - 1
+                    )
+                  }
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 border-2 border-white bg-black/50 text-white flex items-center justify-center hover:bg-white hover:text-black active:scale-95 transition-all shadow-lg z-[410]"
+                >
+                  <i className="fa-solid fa-chevron-left text-lg" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setActivePhotoIdx((prev) =>
+                      prev === item.photos.length - 1 ? 0 : prev + 1
+                    )
+                  }
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 border-2 border-white bg-black/50 text-white flex items-center justify-center hover:bg-white hover:text-black active:scale-95 transition-all shadow-lg z-[410]"
+                >
+                  <i className="fa-solid fa-chevron-right text-lg" />
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

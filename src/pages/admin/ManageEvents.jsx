@@ -12,6 +12,20 @@ export default function ManageEvents() {
   const [successMessage, setSuccessMessage] = useState('');
   const [localError, setLocalError] = useState('');
 
+  useEffect(() => {
+    if (successMessage) {
+      const timer = setTimeout(() => setSuccessMessage(''), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [successMessage]);
+
+  useEffect(() => {
+    if (localError) {
+      const timer = setTimeout(() => setLocalError(''), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [localError]);
+
   // Modal States
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState('add'); // 'add' | 'edit'

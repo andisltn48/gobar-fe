@@ -49,6 +49,13 @@ export default function ManageUsers() {
     loadUsers();
   }, []);
 
+  useEffect(() => {
+    if (successMessage) {
+      const timer = setTimeout(() => setSuccessMessage(''), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [successMessage]);
+
   const handleAddClick = () => {
     setForm({
       name: '',

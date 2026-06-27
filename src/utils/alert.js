@@ -16,6 +16,8 @@ export function showAlert(title, text, icon = 'info') {
     title,
     text,
     icon,
+    timer: 5000,
+    timerProgressBar: true,
   });
 }
 
@@ -24,6 +26,8 @@ export function showSuccess(title, text) {
     title,
     text,
     icon: 'success',
+    timer: 5000,
+    timerProgressBar: true,
   });
 }
 
@@ -32,6 +36,8 @@ export function showError(title, text) {
     title,
     text,
     icon: 'error',
+    timer: 5000,
+    timerProgressBar: true,
   });
 }
 
